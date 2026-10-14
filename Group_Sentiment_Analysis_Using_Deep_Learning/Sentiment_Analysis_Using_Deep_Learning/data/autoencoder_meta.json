@@ -1,0 +1,6 @@
+{
+  "input_dim": 10000,
+  "bottleneck": 32,
+  "threshold": 1.996256173697475e-06,
+  "train_time": 66.16857385635376
+}
