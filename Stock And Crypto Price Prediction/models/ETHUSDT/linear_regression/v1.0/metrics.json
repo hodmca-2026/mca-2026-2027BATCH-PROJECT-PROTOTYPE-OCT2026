@@ -1,0 +1,15 @@
+{
+  "mae": 0.004065,
+  "rmse": 0.005358,
+  "mape_pct": 265.04,
+  "smape_pct": 161.27,
+  "r2": 0.0399,
+  "directional_accuracy_pct": 50.0,
+  "total_return_pct": 0.04,
+  "sharpe_ratio": 0.1,
+  "sortino_ratio": 0.15,
+  "max_drawdown_pct": 1.29,
+  "win_rate_pct": 50.0,
+  "profit_factor": 1.02,
+  "test_samples": 38
+}
