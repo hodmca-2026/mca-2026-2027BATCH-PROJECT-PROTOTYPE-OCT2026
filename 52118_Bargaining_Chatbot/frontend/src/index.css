@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/* Amazon's "Amazon Ember" font is proprietary and not publicly licensable, so
+   Work Sans is used here as a close functional/humanist-sans substitute with
+   a similar no-nonsense, dense-marketplace feel (as opposed to a display serif). */
+@theme {
+  --font-display: "Work Sans", system-ui, sans-serif;
+  --font-body: "Work Sans", system-ui, sans-serif;
+
+  --color-ivory: #FFFFFF;
+  --color-ivory-dim: #F4F4F5;
+  --color-ink: #17181C;
+  --color-ink-soft: #55575E;
+  --color-marigold: #E9A23B;
+  --color-marigold-dark: #C97F1F;
+  --color-rani: #C4256B;
+  --color-rani-dark: #8F2148;
+  --color-sage: #1D8A5B;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-ivory-dim);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+::selection {
+  background-color: var(--color-marigold);
+  color: var(--color-ink);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ivory);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-ink-soft);
+  border-radius: 999px;
+}
