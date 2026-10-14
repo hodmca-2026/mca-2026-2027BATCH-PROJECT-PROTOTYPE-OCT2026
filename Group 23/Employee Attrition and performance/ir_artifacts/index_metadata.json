@@ -1,0 +1,118 @@
+{
+    "document_count": 20,
+    "unique_terms": 234,
+    "total_indexed_postings": 597,
+    "total_processed_tokens": 816,
+    "average_document_length": 40.8,
+    "preprocessing": [
+        "lowercase",
+        "punctuation removal",
+        "tokenization",
+        "stopword removal",
+        "short-token removal",
+        "rule-based stemming"
+    ],
+    "document_statistics": {
+        "annual_leave": {
+            "original_word_count": 58,
+            "processed_token_count": 40,
+            "unique_term_count": 27
+        },
+        "appraisal_policy": {
+            "original_word_count": 52,
+            "processed_token_count": 37,
+            "unique_term_count": 29
+        },
+        "bonus_policy": {
+            "original_word_count": 56,
+            "processed_token_count": 38,
+            "unique_term_count": 29
+        },
+        "compensation_policy": {
+            "original_word_count": 54,
+            "processed_token_count": 44,
+            "unique_term_count": 35
+        },
+        "emergency_leave": {
+            "original_word_count": 59,
+            "processed_token_count": 40,
+            "unique_term_count": 28
+        },
+        "employee_assistance": {
+            "original_word_count": 59,
+            "processed_token_count": 45,
+            "unique_term_count": 31
+        },
+        "employee_benefits": {
+            "original_word_count": 51,
+            "processed_token_count": 37,
+            "unique_term_count": 28
+        },
+        "health_insurance": {
+            "original_word_count": 58,
+            "processed_token_count": 44,
+            "unique_term_count": 30
+        },
+        "leadership_training": {
+            "original_word_count": 58,
+            "processed_token_count": 43,
+            "unique_term_count": 29
+        },
+        "leave_policy": {
+            "original_word_count": 56,
+            "processed_token_count": 38,
+            "unique_term_count": 26
+        },
+        "overtime_policy": {
+            "original_word_count": 62,
+            "processed_token_count": 41,
+            "unique_term_count": 28
+        },
+        "performance_policy": {
+            "original_word_count": 54,
+            "processed_token_count": 38,
+            "unique_term_count": 28
+        },
+        "performance_review": {
+            "original_word_count": 56,
+            "processed_token_count": 40,
+            "unique_term_count": 32
+        },
+        "promotion_guidelines": {
+            "original_word_count": 54,
+            "processed_token_count": 40,
+            "unique_term_count": 31
+        },
+        "retirement_benefits": {
+            "original_word_count": 55,
+            "processed_token_count": 39,
+            "unique_term_count": 27
+        },
+        "salary_policy": {
+            "original_word_count": 50,
+            "processed_token_count": 40,
+            "unique_term_count": 35
+        },
+        "sick_leave": {
+            "original_word_count": 58,
+            "processed_token_count": 41,
+            "unique_term_count": 27
+        },
+        "skill_development": {
+            "original_word_count": 59,
+            "processed_token_count": 44,
+            "unique_term_count": 34
+        },
+        "technical_training": {
+            "original_word_count": 60,
+            "processed_token_count": 46,
+            "unique_term_count": 34
+        },
+        "training_policy": {
+            "original_word_count": 57,
+            "processed_token_count": 41,
+            "unique_term_count": 29
+        }
+    },
+    "generated_at": "2026-10-13T14:15:16.217257+00:00"
+}

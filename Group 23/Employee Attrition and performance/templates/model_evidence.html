@@ -1,0 +1,481 @@
+{% extends "base.html" %}
+
+{% block title %}Model Evidence | HR Insight AI{% endblock %}
+{% block page_name %}Model Evidence{% endblock %}
+
+{% block content %}
+
+<div class="evidence-page">
+
+    <!-- =========================
+         HERO
+    ========================== -->
+    <section class="evidence-hero">
+
+        <div>
+
+            <div class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                Model evaluation workspace
+            </div>
+
+            <h1>Model Evidence</h1>
+
+            <p>
+                Review test-set metrics, confusion matrices,
+                neural-network architecture, and SHAP-based
+                explainability evidence for the HR prediction models.
+            </p>
+
+        </div>
+
+        <div class="evidence-status-pill">
+            <span class="evidence-status-dot"></span>
+            Evaluation Evidence
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         LOADING
+    ========================== -->
+    <div
+        id="evidenceLoading"
+        class="evidence-loading"
+    >
+
+        <div class="loading-ring"></div>
+
+        <div>
+            <strong>Loading model evidence...</strong>
+            <span>Retrieving evaluation artifacts.</span>
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         ERROR
+    ========================== -->
+    <div
+        id="evidenceError"
+        class="evidence-error hidden"
+    >
+
+        <i data-lucide="alert-circle"></i>
+
+        <div>
+
+            <strong>
+                Unable to load model evidence
+            </strong>
+
+            <p></p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         CONTENT
+    ========================== -->
+    <div
+        id="evidenceContent"
+        class="hidden"
+    >
+
+
+        <!-- =========================
+             ATTRITION
+        ========================== -->
+        <section class="evidence-section">
+
+            <div class="evidence-section-heading">
+
+                <div>
+
+                    <span class="section-kicker">
+                        Attrition prediction
+                    </span>
+
+                    <h2>
+                        Model Comparison
+                    </h2>
+
+                    <p>
+                        Binary classification evaluated on
+                        the held-out test set.
+                    </p>
+
+                </div>
+
+                <span class="evidence-chip">
+                    1,000 test records
+                </span>
+
+            </div>
+
+
+            <div class="evidence-card">
+
+                <div class="evidence-table-wrapper">
+
+                    <table class="evidence-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Model</th>
+                                <th>Accuracy</th>
+                                <th>Precision</th>
+                                <th>Recall</th>
+                                <th>F1</th>
+                                <th>ROC-AUC</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="attritionTable"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ATTRITION MATRIX + ARCHITECTURE
+        ========================== -->
+        <section class="evidence-two-column">
+
+
+            <!-- CONFUSION MATRIX -->
+            <article class="evidence-card">
+
+                <div class="evidence-card-header">
+
+                    <div>
+
+                        <span class="section-kicker">
+                            Classification evidence
+                        </span>
+
+                        <h3>
+                            Attrition DNN Confusion Matrix
+                        </h3>
+
+                        <p>
+                            Rows represent actual classes;
+                            columns represent predictions.
+                        </p>
+
+                    </div>
+
+                    <span class="evidence-mini-chip">
+                        DNN
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="attritionMatrix"
+                    class="matrix-container"
+                ></div>
+
+            </article>
+
+
+            <!-- ARCHITECTURE -->
+            <article class="evidence-card">
+
+                <div class="evidence-card-header">
+
+                    <div>
+
+                        <span class="section-kicker">
+                            Neural network
+                        </span>
+
+                        <h3>
+                            Attrition DNN Architecture
+                        </h3>
+
+                        <p>
+                            Production model used by the
+                            employee assessment workflow.
+                        </p>
+
+                    </div>
+
+                    <span class="evidence-mini-chip">
+                        DNN
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="attritionArchitecture"
+                    class="architecture-list"
+                ></div>
+
+            </article>
+
+        </section>
+
+
+        <!-- =========================
+             PERFORMANCE
+        ========================== -->
+        <section class="evidence-section">
+
+            <div class="evidence-section-heading">
+
+                <div>
+
+                    <span class="section-kicker">
+                        Performance prediction
+                    </span>
+
+                    <h2>
+                        Model Comparison
+                    </h2>
+
+                    <p>
+                        Four-class prediction across performance
+                        ratings 2 through 5.
+                    </p>
+
+                </div>
+
+                <span class="evidence-chip">
+                    Ratings 2–5
+                </span>
+
+            </div>
+
+
+            <div class="evidence-card">
+
+                <div class="evidence-table-wrapper">
+
+                    <table class="evidence-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Model</th>
+                                <th>Accuracy</th>
+                                <th>Macro Precision</th>
+                                <th>Macro Recall</th>
+                                <th>Macro F1</th>
+                                <th>Weighted F1</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="performanceTable"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PERFORMANCE MATRIX + NOTES
+        ========================== -->
+        <section class="evidence-two-column">
+
+
+            <article class="evidence-card">
+
+                <div class="evidence-card-header">
+
+                    <div>
+
+                        <span class="section-kicker">
+                            Classification evidence
+                        </span>
+
+                        <h3>
+                            Performance DNN Confusion Matrix
+                        </h3>
+
+                        <p>
+                            Rows represent actual ratings;
+                            columns represent predictions.
+                        </p>
+
+                    </div>
+
+                    <span class="evidence-mini-chip">
+                        Ratings 2–5
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="performanceMatrix"
+                    class="matrix-container"
+                ></div>
+
+            </article>
+
+
+            <article class="evidence-card">
+
+                <div class="evidence-card-header">
+
+                    <div>
+
+                        <span class="section-kicker">
+                            Interpretation
+                        </span>
+
+                        <h3>
+                            Evaluation Notes
+                        </h3>
+
+                        <p>
+                            Context for reading the reported metrics.
+                        </p>
+
+                    </div>
+
+                    <span class="evidence-mini-chip">
+                        TEST SET
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="evaluationNotes"
+                    class="evaluation-notes"
+                ></div>
+
+            </article>
+
+        </section>
+
+
+        <!-- =========================
+             GLOBAL SHAP
+        ========================== -->
+        <section class="evidence-section">
+
+            <div class="evidence-section-heading">
+
+                <div>
+
+                    <span class="section-kicker">
+                        Explainable AI
+                    </span>
+
+                    <h2>
+                        Global SHAP Feature Importance
+                    </h2>
+
+                    <p>
+                        Saved global feature importance used
+                        to summarize model behavior.
+                    </p>
+
+                </div>
+
+                <span class="evidence-chip">
+                    SHAP
+                </span>
+
+            </div>
+
+
+            <div class="evidence-card">
+
+                <div
+                    id="globalShapTable"
+                    class="shap-global-container"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             XAI NOTES
+        ========================== -->
+        <section class="evidence-card xai-note-card">
+
+            <div class="xai-note-icon">
+                <i data-lucide="sparkles"></i>
+            </div>
+
+            <div>
+
+                <span class="section-kicker">
+                    Explainability
+                </span>
+
+                <h3>
+                    How SHAP is used in this application
+                </h3>
+
+                <div class="xai-note-content">
+
+                    <p>
+                        Employee Assessment generates
+                        SHAP-based feature contributions
+                        on demand.
+                    </p>
+
+                    <p>
+                        Positive contributions indicate that
+                        a feature increased the model's predicted
+                        attrition probability; negative contributions
+                        indicate that it decreased the predicted probability.
+                    </p>
+
+                    <p>
+                        SHAP contributions explain model behavior
+                        and should not be interpreted as proof of
+                        causal relationships.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script src="{{ url_for(
+    'static',
+    filename='js/model_evidence.js'
+) }}"></script>
+
+{% endblock %}

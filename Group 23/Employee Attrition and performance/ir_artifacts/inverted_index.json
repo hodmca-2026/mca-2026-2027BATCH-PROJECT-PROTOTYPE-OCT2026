@@ -1,0 +1,1067 @@
+{
+    "annual": {
+        "annual_leave": 4,
+        "leave_policy": 1
+    },
+    "leave": {
+        "annual_leave": 6,
+        "emergency_leave": 4,
+        "employee_benefits": 1,
+        "leave_policy": 9,
+        "sick_leave": 5
+    },
+    "policy": {
+        "annual_leave": 2,
+        "appraisal_policy": 1,
+        "bonus_policy": 1,
+        "compensation_policy": 1,
+        "emergency_leave": 2,
+        "employee_benefits": 1,
+        "health_insurance": 2,
+        "leadership_training": 1,
+        "leave_policy": 1,
+        "overtime_policy": 1,
+        "performance_policy": 1,
+        "retirement_benefits": 1,
+        "salary_policy": 1,
+        "sick_leave": 2,
+        "skill_development": 1,
+        "technical_training": 1,
+        "training_policy": 1
+    },
+    "employe": {
+        "annual_leave": 2,
+        "appraisal_policy": 1,
+        "bonus_policy": 2,
+        "compensation_policy": 2,
+        "emergency_leave": 1,
+        "employee_assistance": 3,
+        "employee_benefits": 2,
+        "health_insurance": 3,
+        "leadership_training": 3,
+        "leave_policy": 3,
+        "overtime_policy": 3,
+        "performance_policy": 3,
+        "performance_review": 2,
+        "promotion_guidelines": 2,
+        "retirement_benefits": 3,
+        "salary_policy": 1,
+        "sick_leave": 3,
+        "skill_development": 2,
+        "technical_training": 2,
+        "training_policy": 2
+    },
+    "entitl": {
+        "annual_leave": 1,
+        "leave_policy": 1
+    },
+    "accord": {
+        "annual_leave": 2,
+        "emergency_leave": 1,
+        "employee_assistance": 1,
+        "employee_benefits": 1,
+        "health_insurance": 1,
+        "overtime_policy": 1,
+        "salary_policy": 1,
+        "sick_leave": 1
+    },
+    "employ": {
+        "annual_leave": 1,
+        "employee_benefits": 1,
+        "retirement_benefits": 1
+    },
+    "term": {
+        "annual_leave": 1,
+        "retirement_benefits": 1
+    },
+    "normally": {
+        "annual_leave": 1
+    },
+    "request": {
+        "annual_leave": 2,
+        "emergency_leave": 2,
+        "leave_policy": 2,
+        "sick_leave": 2,
+        "skill_development": 1,
+        "technical_training": 1,
+        "training_policy": 1
+    },
+    "advance": {
+        "annual_leave": 1
+    },
+    "hr": {
+        "annual_leave": 1,
+        "bonus_policy": 1,
+        "compensation_policy": 2,
+        "emergency_leave": 1,
+        "employee_assistance": 1,
+        "employee_benefits": 2,
+        "health_insurance": 2,
+        "leave_policy": 1,
+        "overtime_policy": 1,
+        "retirement_benefits": 2,
+        "salary_policy": 1,
+        "sick_leave": 1
+    },
+    "portal": {
+        "annual_leave": 1,
+        "leave_policy": 1
+    },
+    "manag": {
+        "annual_leave": 2,
+        "appraisal_policy": 2,
+        "compensation_policy": 1,
+        "emergency_leave": 1,
+        "leadership_training": 1,
+        "leave_policy": 2,
+        "overtime_policy": 1,
+        "performance_policy": 2,
+        "performance_review": 2,
+        "promotion_guidelines": 1,
+        "salary_policy": 1,
+        "sick_leave": 2,
+        "skill_development": 1,
+        "technical_training": 1,
+        "training_policy": 1
+    },
+    "review": {
+        "annual_leave": 1,
+        "emergency_leave": 1,
+        "health_insurance": 1,
+        "leave_policy": 1,
+        "performance_policy": 2,
+        "performance_review": 3,
+        "retirement_benefits": 1,
+        "salary_policy": 1,
+        "training_policy": 1
+    },
+    "bas": {
+        "annual_leave": 1,
+        "bonus_policy": 1,
+        "performance_review": 1,
+        "promotion_guidelines": 1,
+        "salary_policy": 1,
+        "technical_training": 1,
+        "training_policy": 1
+    },
+    "staff": {
+        "annual_leave": 1
+    },
+    "require": {
+        "annual_leave": 1,
+        "promotion_guidelines": 2,
+        "salary_policy": 1,
+        "skill_development": 1,
+        "technical_training": 1
+    },
+    "organizational": {
+        "annual_leave": 1,
+        "bonus_policy": 2,
+        "compensation_policy": 1,
+        "emergency_leave": 1,
+        "employee_assistance": 1,
+        "employee_benefits": 1,
+        "health_insurance": 1,
+        "overtime_policy": 1,
+        "promotion_guidelines": 2,
+        "retirement_benefits": 1,
+        "salary_policy": 2,
+        "sick_leave": 1,
+        "skill_development": 1
+    },
+    "unus": {
+        "annual_leave": 1
+    },
+    "carri": {
+        "annual_leave": 1
+    },
+    "forward": {
+        "annual_leave": 1
+    },
+    "company": {
+        "annual_leave": 1,
+        "salary_policy": 1
+    },
+    "rul": {
+        "annual_leave": 1,
+        "emergency_leave": 1,
+        "retirement_benefits": 1
+    },
+    "coordinate": {
+        "annual_leave": 1
+    },
+    "plann": {
+        "annual_leave": 1,
+        "leadership_training": 1,
+        "leave_policy": 1
+    },
+    "team": {
+        "annual_leave": 1,
+        "leadership_training": 1
+    },
+    "employee": {
+        "appraisal_policy": 2,
+        "bonus_policy": 1,
+        "compensation_policy": 1,
+        "emergency_leave": 2,
+        "employee_assistance": 3,
+        "employee_benefits": 3,
+        "leave_policy": 1,
+        "performance_policy": 2,
+        "performance_review": 1,
+        "promotion_guidelines": 1,
+        "salary_policy": 1,
+        "skill_development": 1,
+        "training_policy": 1
+    },
+    "appraisal": {
+        "appraisal_policy": 5
+    },
+    "conduct": {
+        "appraisal_policy": 1
+    },
+    "periodically": {
+        "appraisal_policy": 1,
+        "performance_policy": 1,
+        "retirement_benefits": 1,
+        "salary_policy": 1
+    },
+    "evaluate": {
+        "appraisal_policy": 1,
+        "performance_review": 1
+    },
+    "performance": {
+        "appraisal_policy": 1,
+        "bonus_policy": 3,
+        "compensation_policy": 1,
+        "leadership_training": 1,
+        "performance_policy": 4,
+        "performance_review": 4,
+        "promotion_guidelines": 2,
+        "skill_development": 1,
+        "technical_training": 1,
+        "training_policy": 2
+    },
+    "develop": {
+        "appraisal_policy": 3,
+        "leadership_training": 4,
+        "performance_policy": 2,
+        "performance_review": 1,
+        "promotion_guidelines": 1,
+        "skill_development": 5,
+        "technical_training": 1,
+        "training_policy": 3
+    },
+    "consid": {
+        "appraisal_policy": 1,
+        "compensation_policy": 1,
+        "performance_policy": 1,
+        "performance_review": 1
+    },
+    "achieve": {
+        "appraisal_policy": 1,
+        "bonus_policy": 1,
+        "performance_policy": 1,
+        "promotion_guidelines": 1
+    },
+    "objectiv": {
+        "appraisal_policy": 1,
+        "bonus_policy": 1,
+        "performance_policy": 1,
+        "performance_review": 1,
+        "promotion_guidelines": 1
+    },
+    "quality": {
+        "appraisal_policy": 1,
+        "performance_policy": 1,
+        "performance_review": 1
+    },
+    "work": {
+        "appraisal_policy": 1,
+        "employee_assistance": 1,
+        "overtime_policy": 3,
+        "performance_policy": 1,
+        "performance_review": 2,
+        "sick_leave": 1
+    },
+    "teamwork": {
+        "appraisal_policy": 1,
+        "performance_policy": 1,
+        "performance_review": 1,
+        "skill_development": 1
+    },
+    "communication": {
+        "appraisal_policy": 1,
+        "leadership_training": 1,
+        "performance_policy": 1,
+        "performance_review": 1,
+        "skill_development": 1,
+        "training_policy": 1
+    },
+    "professional": {
+        "appraisal_policy": 1,
+        "skill_development": 1,
+        "training_policy": 1
+    },
+    "behavior": {
+        "appraisal_policy": 1
+    },
+    "provide": {
+        "appraisal_policy": 1
+    },
+    "constructive": {
+        "appraisal_policy": 1
+    },
+    "feedback": {
+        "appraisal_policy": 1,
+        "performance_policy": 1,
+        "performance_review": 1
+    },
+    "discussion": {
+        "appraisal_policy": 1,
+        "leadership_training": 1,
+        "skill_development": 1
+    },
+    "discus": {
+        "appraisal_policy": 1,
+        "performance_review": 1,
+        "promotion_guidelines": 1,
+        "salary_policy": 1
+    },
+    "goal": {
+        "appraisal_policy": 1,
+        "skill_development": 1
+    },
+    "result": {
+        "appraisal_policy": 1,
+        "bonus_policy": 1
+    },
+    "consider": {
+        "appraisal_policy": 1,
+        "bonus_policy": 1,
+        "leadership_training": 1,
+        "performance_policy": 1,
+        "training_policy": 1
+    },
+    "care": {
+        "appraisal_policy": 1,
+        "leadership_training": 1,
+        "performance_policy": 1,
+        "promotion_guidelines": 1
+    },
+    "recognition": {
+        "appraisal_policy": 1,
+        "performance_policy": 1
+    },
+    "bonu": {
+        "bonus_policy": 4
+    },
+    "eligible": {
+        "bonus_policy": 1,
+        "health_insurance": 1,
+        "overtime_policy": 1,
+        "retirement_benefits": 1
+    },
+    "bonus": {
+        "bonus_policy": 1,
+        "compensation_policy": 1
+    },
+    "individual": {
+        "bonus_policy": 1
+    },
+    "eligibility": {
+        "bonus_policy": 2,
+        "employee_benefits": 1,
+        "health_insurance": 1,
+        "overtime_policy": 1,
+        "retirement_benefits": 1
+    },
+    "amount": {
+        "bonus_policy": 1
+    },
+    "depend": {
+        "bonus_policy": 1,
+        "retirement_benefits": 1
+    },
+    "applicable": {
+        "bonus_policy": 2,
+        "compensation_policy": 1
+    },
+    "compensation": {
+        "bonus_policy": 1,
+        "compensation_policy": 7,
+        "overtime_policy": 4,
+        "salary_policy": 1
+    },
+    "plan": {
+        "bonus_policy": 1,
+        "health_insurance": 1,
+        "performance_review": 1,
+        "retirement_benefits": 1,
+        "skill_development": 1
+    },
+    "busi": {
+        "bonus_policy": 1
+    },
+    "outcom": {
+        "bonus_policy": 1
+    },
+    "pay": {
+        "bonus_policy": 1,
+        "compensation_policy": 1,
+        "overtime_policy": 1
+    },
+    "subject": {
+        "bonus_policy": 1
+    },
+    "approval": {
+        "bonus_policy": 1,
+        "leave_policy": 1,
+        "promotion_guidelines": 1,
+        "salary_policy": 1
+    },
+    "polic": {
+        "bonus_policy": 1,
+        "compensation_policy": 2,
+        "employee_benefits": 1,
+        "overtime_policy": 1,
+        "promotion_guidelines": 1,
+        "salary_policy": 1
+    },
+    "contact": {
+        "bonus_policy": 1,
+        "compensation_policy": 1,
+        "employee_assistance": 2,
+        "employee_benefits": 1,
+        "health_insurance": 1,
+        "overtime_policy": 1,
+        "retirement_benefits": 1
+    },
+    "question": {
+        "bonus_policy": 1,
+        "compensation_policy": 1,
+        "health_insurance": 1,
+        "overtime_policy": 1,
+        "salary_policy": 1
+    },
+    "organization": {
+        "compensation_policy": 1,
+        "leave_policy": 1,
+        "overtime_policy": 1,
+        "retirement_benefits": 1,
+        "technical_training": 1
+    },
+    "program": {
+        "compensation_policy": 1,
+        "employee_assistance": 3,
+        "employee_benefits": 1,
+        "leadership_training": 1,
+        "retirement_benefits": 1,
+        "skill_development": 1,
+        "technical_training": 1,
+        "training_policy": 1
+    },
+    "includ": {
+        "compensation_policy": 1
+    },
+    "salary": {
+        "compensation_policy": 1,
+        "salary_policy": 4
+    },
+    "overtime": {
+        "compensation_policy": 1,
+        "overtime_policy": 6
+    },
+    "oth": {
+        "compensation_policy": 1,
+        "health_insurance": 1
+    },
+    "reward": {
+        "compensation_policy": 1
+    },
+    "decision": {
+        "compensation_policy": 1,
+        "leadership_training": 1,
+        "promotion_guidelines": 1
+    },
+    "job": {
+        "compensation_policy": 1,
+        "salary_policy": 2,
+        "technical_training": 1
+    },
+    "responsibilit": {
+        "compensation_policy": 1
+    },
+    "experience": {
+        "compensation_policy": 1,
+        "promotion_guidelines": 1,
+        "salary_policy": 1
+    },
+    "receive": {
+        "compensation_policy": 1,
+        "employee_benefits": 1,
+        "health_insurance": 1,
+        "performance_policy": 1,
+        "performance_review": 1
+    },
+    "accurate": {
+        "compensation_policy": 1
+    },
+    "information": {
+        "compensation_policy": 1,
+        "employee_assistance": 1,
+        "employee_benefits": 1,
+        "health_insurance": 1,
+        "retirement_benefits": 1,
+        "salary_policy": 1
+    },
+    "procedur": {
+        "compensation_policy": 1,
+        "employee_assistance": 1,
+        "leave_policy": 1,
+        "promotion_guidelines": 1,
+        "salary_policy": 1
+    },
+    "communicat": {
+        "compensation_policy": 1,
+        "employee_benefits": 1,
+        "leave_policy": 1,
+        "retirement_benefits": 1
+    },
+    "approv": {
+        "compensation_policy": 1,
+        "health_insurance": 1,
+        "leave_policy": 1,
+        "overtime_policy": 1
+    },
+    "chang": {
+        "compensation_policy": 1,
+        "employee_benefits": 1,
+        "health_insurance": 1,
+        "retirement_benefits": 1,
+        "salary_policy": 1
+    },
+    "regard": {
+        "compensation_policy": 1
+    },
+    "benefit": {
+        "compensation_policy": 1,
+        "employee_benefits": 6,
+        "health_insurance": 2,
+        "retirement_benefits": 4
+    },
+    "emergency": {
+        "emergency_leave": 5,
+        "leave_policy": 1
+    },
+    "grant": {
+        "emergency_leave": 1
+    },
+    "when": {
+        "emergency_leave": 2,
+        "sick_leave": 2,
+        "skill_development": 1,
+        "technical_training": 1,
+        "training_policy": 1
+    },
+    "fac": {
+        "emergency_leave": 1
+    },
+    "unexpect": {
+        "emergency_leave": 1
+    },
+    "personal": {
+        "emergency_leave": 1,
+        "employee_assistance": 1
+    },
+    "family": {
+        "emergency_leave": 1
+    },
+    "notify": {
+        "emergency_leave": 1
+    },
+    "soon": {
+        "emergency_leave": 1,
+        "leave_policy": 1,
+        "sick_leave": 1
+    },
+    "reasonably": {
+        "emergency_leave": 1
+    },
+    "possible": {
+        "emergency_leave": 1,
+        "leave_policy": 1,
+        "sick_leave": 1
+    },
+    "submit": {
+        "emergency_leave": 1,
+        "leave_policy": 1,
+        "sick_leave": 1
+    },
+    "requir": {
+        "emergency_leave": 2,
+        "sick_leave": 1,
+        "skill_development": 1
+    },
+    "situation": {
+        "emergency_leave": 1
+    },
+    "address": {
+        "emergency_leave": 1
+    },
+    "support": {
+        "emergency_leave": 1,
+        "employee_assistance": 3,
+        "leadership_training": 1,
+        "promotion_guidelines": 1
+    },
+    "documentation": {
+        "emergency_leave": 1,
+        "sick_leave": 1
+    },
+    "assistance": {
+        "employee_assistance": 5,
+        "employee_benefits": 1
+    },
+    "provid": {
+        "employee_assistance": 1,
+        "health_insurance": 1,
+        "overtime_policy": 1,
+        "performance_policy": 1,
+        "retirement_benefits": 1
+    },
+    "experienc": {
+        "employee_assistance": 1
+    },
+    "workplace": {
+        "employee_assistance": 1,
+        "training_policy": 1
+    },
+    "challeng": {
+        "employee_assistance": 1
+    },
+    "include": {
+        "employee_assistance": 1,
+        "employee_benefits": 1,
+        "leadership_training": 1,
+        "skill_development": 1,
+        "technical_training": 1,
+        "training_policy": 1
+    },
+    "confidential": {
+        "employee_assistance": 1
+    },
+    "counsel": {
+        "employee_assistance": 1
+    },
+    "wellbe": {
+        "employee_assistance": 2
+    },
+    "guidance": {
+        "employee_assistance": 1
+    },
+    "resourc": {
+        "employee_assistance": 1
+    },
+    "appropriate": {
+        "employee_assistance": 1,
+        "overtime_policy": 1,
+        "salary_policy": 1
+    },
+    "service": {
+        "employee_assistance": 1
+    },
+    "directly": {
+        "employee_assistance": 1
+    },
+    "intend": {
+        "employee_assistance": 1
+    },
+    "life": {
+        "employee_assistance": 1
+    },
+    "balance": {
+        "employee_assistance": 1
+    },
+    "available": {
+        "employee_assistance": 1
+    },
+    "servic": {
+        "employee_assistance": 1,
+        "health_insurance": 1
+    },
+    "level": {
+        "employee_benefits": 1,
+        "salary_policy": 1
+    },
+    "health": {
+        "employee_benefits": 1,
+        "health_insurance": 4
+    },
+    "insurance": {
+        "employee_benefits": 1,
+        "health_insurance": 6
+    },
+    "paid": {
+        "employee_benefits": 1
+    },
+    "retire": {
+        "employee_benefits": 1,
+        "retirement_benefits": 6
+    },
+    "depart": {
+        "employee_benefits": 1
+    },
+    "enroll": {
+        "employee_benefits": 1,
+        "health_insurance": 1
+    },
+    "official": {
+        "employee_benefits": 1,
+        "retirement_benefits": 1
+    },
+    "announce": {
+        "employee_benefits": 1
+    },
+    "cov": {
+        "health_insurance": 1
+    },
+    "specifi": {
+        "health_insurance": 1
+    },
+    "medical": {
+        "health_insurance": 1,
+        "sick_leave": 1
+    },
+    "hospitalization": {
+        "health_insurance": 1
+    },
+    "treat": {
+        "health_insurance": 1
+    },
+    "detail": {
+        "health_insurance": 1
+    },
+    "understand": {
+        "health_insurance": 1
+    },
+    "coverage": {
+        "health_insurance": 2
+    },
+    "leadership": {
+        "leadership_training": 7,
+        "training_policy": 1
+    },
+    "train": {
+        "leadership_training": 3,
+        "performance_policy": 1,
+        "promotion_guidelines": 1,
+        "skill_development": 2,
+        "technical_training": 7,
+        "training_policy": 6
+    },
+    "design": {
+        "leadership_training": 1
+    },
+    "help": {
+        "leadership_training": 1
+    },
+    "manage": {
+        "leadership_training": 2
+    },
+    "skill": {
+        "leadership_training": 1,
+        "promotion_guidelines": 2,
+        "salary_policy": 1,
+        "skill_development": 5,
+        "technical_training": 2,
+        "training_policy": 3
+    },
+    "topic": {
+        "leadership_training": 1
+    },
+    "delegation": {
+        "leadership_training": 1
+    },
+    "conflict": {
+        "leadership_training": 1
+    },
+    "mak": {
+        "leadership_training": 1
+    },
+    "prepar": {
+        "leadership_training": 1
+    },
+    "rol": {
+        "leadership_training": 1,
+        "skill_development": 1
+    },
+    "recommend": {
+        "leadership_training": 1,
+        "technical_training": 1,
+        "training_policy": 1
+    },
+    "participat": {
+        "leadership_training": 1
+    },
+    "sick": {
+        "leave_policy": 1,
+        "sick_leave": 5
+    },
+    "tak": {
+        "leave_policy": 1,
+        "sick_leave": 1
+    },
+    "responsible": {
+        "leave_policy": 1
+    },
+    "follow": {
+        "leave_policy": 1,
+        "promotion_guidelines": 1
+    },
+    "unplann": {
+        "leave_policy": 1
+    },
+    "beyond": {
+        "overtime_policy": 1
+    },
+    "normal": {
+        "overtime_policy": 1
+    },
+    "hour": {
+        "overtime_policy": 2
+    },
+    "perform": {
+        "overtime_policy": 1,
+        "performance_policy": 1
+    },
+    "record": {
+        "overtime_policy": 1,
+        "technical_training": 1
+    },
+    "accurately": {
+        "overtime_policy": 1
+    },
+    "time": {
+        "overtime_policy": 1
+    },
+    "track": {
+        "overtime_policy": 1
+    },
+    "system": {
+        "overtime_policy": 1,
+        "sick_leave": 1,
+        "technical_training": 1
+    },
+    "productivity": {
+        "performance_policy": 1,
+        "performance_review": 1
+    },
+    "regular": {
+        "performance_policy": 1
+    },
+    "gap": {
+        "performance_policy": 1,
+        "technical_training": 1,
+        "training_policy": 1
+    },
+    "opportunit": {
+        "performance_policy": 2,
+        "promotion_guidelines": 1,
+        "skill_development": 1
+    },
+    "high": {
+        "performance_policy": 1,
+        "promotion_guidelines": 1
+    },
+    "guidelin": {
+        "performance_review": 1,
+        "promotion_guidelines": 1
+    },
+    "progres": {
+        "performance_review": 1
+    },
+    "against": {
+        "performance_review": 1
+    },
+    "agre": {
+        "performance_review": 1
+    },
+    "engage": {
+        "performance_review": 1
+    },
+    "clear": {
+        "performance_review": 1
+    },
+    "strength": {
+        "performance_review": 1
+    },
+    "area": {
+        "performance_review": 1
+    },
+    "improve": {
+        "performance_review": 1,
+        "technical_training": 1
+    },
+    "document": {
+        "performance_review": 1
+    },
+    "objective": {
+        "performance_review": 1
+    },
+    "evidence": {
+        "performance_review": 1
+    },
+    "concern": {
+        "performance_review": 1
+    },
+    "promotion": {
+        "promotion_guidelines": 4
+    },
+    "role": {
+        "promotion_guidelines": 2,
+        "salary_policy": 1,
+        "technical_training": 1
+    },
+    "need": {
+        "promotion_guidelines": 1,
+        "technical_training": 1,
+        "training_policy": 1
+    },
+    "consistent": {
+        "promotion_guidelines": 1
+    },
+    "consideration": {
+        "promotion_guidelines": 1
+    },
+    "additional": {
+        "promotion_guidelines": 1,
+        "skill_development": 1,
+        "training_policy": 1
+    },
+    "mov": {
+        "promotion_guidelines": 1
+    },
+    "participate": {
+        "retirement_benefits": 1,
+        "skill_development": 1,
+        "technical_training": 1,
+        "training_policy": 1
+    },
+    "contribution": {
+        "retirement_benefits": 2
+    },
+    "option": {
+        "retirement_benefits": 1
+    },
+    "channel": {
+        "retirement_benefits": 1
+    },
+    "salar": {
+        "salary_policy": 1
+    },
+    "determin": {
+        "salary_policy": 1
+    },
+    "market": {
+        "salary_policy": 1
+    },
+    "condition": {
+        "salary_policy": 1
+    },
+    "occur": {
+        "salary_policy": 1
+    },
+    "relat": {
+        "salary_policy": 1,
+        "technical_training": 1
+    },
+    "handl": {
+        "salary_policy": 1
+    },
+    "confidentially": {
+        "salary_policy": 1,
+        "sick_leave": 1
+    },
+    "take": {
+        "sick_leave": 1
+    },
+    "unable": {
+        "sick_leave": 1
+    },
+    "due": {
+        "sick_leave": 1
+    },
+    "ill": {
+        "sick_leave": 1
+    },
+    "inform": {
+        "sick_leave": 1
+    },
+    "handle": {
+        "sick_leave": 1
+    },
+    "consistently": {
+        "sick_leave": 1
+    },
+    "encourag": {
+        "skill_development": 1,
+        "training_policy": 1
+    },
+    "technical": {
+        "skill_development": 1,
+        "technical_training": 5,
+        "training_policy": 2
+    },
+    "knowledge": {
+        "skill_development": 1
+    },
+    "problem": {
+        "skill_development": 1
+    },
+    "solv": {
+        "skill_development": 1
+    },
+    "identify": {
+        "skill_development": 1,
+        "technical_training": 1,
+        "training_policy": 1
+    },
+    "current": {
+        "skill_development": 1
+    },
+    "future": {
+        "skill_development": 1
+    },
+    "align": {
+        "skill_development": 1
+    },
+    "programm": {
+        "technical_training": 1
+    },
+    "software": {
+        "technical_training": 1
+    },
+    "tool": {
+        "technical_training": 1
+    },
+    "data": {
+        "technical_training": 1
+    },
+    "analysi": {
+        "technical_training": 1
+    },
+    "cybersecurity": {
+        "technical_training": 1
+    },
+    "certification": {
+        "technical_training": 1
+    },
+    "participation": {
+        "technical_training": 1,
+        "training_policy": 1
+    },
+    "safety": {
+        "training_policy": 1
+    }
+}

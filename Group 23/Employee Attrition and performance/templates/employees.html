@@ -1,0 +1,514 @@
+{% extends "base.html" %}
+
+{% block title %}Employee Roster | HR Insight AI{% endblock %}
+{% block page_name %}Employee Roster{% endblock %}
+
+{% block content %}
+
+<div class="employees-page">
+
+    <!-- =========================
+         PAGE HEADER
+    ========================== -->
+    <section class="employees-hero">
+
+        <div>
+
+            <div class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                Workforce directory
+            </div>
+
+            <h1>Employee Roster</h1>
+
+            <p>
+                Search employee records, review workforce profiles,
+                run AI assessments, and access explainable HR
+                decision-support insights.
+            </p>
+
+        </div>
+
+        <div class="roster-status" id="rosterStatus">
+            Loading workforce records...
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         DIRECTORY
+    ========================== -->
+    <section class="directory-card surface-card">
+
+        <div class="directory-header">
+
+            <div>
+
+                <span class="section-kicker">
+                    Workforce directory
+                </span>
+
+                <h2>Employee Search</h2>
+
+                <p>
+                    Search by employee ID, department, or job role.
+                </p>
+
+            </div>
+
+            <span
+                id="employeeCount"
+                class="badge badge-low"
+            >
+                Loading...
+            </span>
+
+        </div>
+
+
+        <!-- FILTER TOOLBAR -->
+        <div class="employee-toolbar">
+
+            <div class="employee-search">
+
+                <i data-lucide="search"></i>
+
+                <input
+                    id="employeeSearch"
+                    type="text"
+                    class="form-control"
+                    placeholder="Search employee ID, department or role..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <div class="employee-filter">
+
+                <select
+                    id="departmentFilter"
+                    class="form-control"
+                >
+
+                    <option value="">
+                        All Departments
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                id="clearFilters"
+                type="button"
+                class="btn btn-secondary"
+            >
+                <i data-lucide="rotate-ccw"></i>
+                Clear
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         EMPLOYEE TABLE
+    ========================== -->
+    <section class="roster-table-card surface-card">
+
+        <div class="directory-header roster-table-header">
+
+            <div>
+
+                <span class="section-kicker">
+                    Employee records
+                </span>
+
+                <h2>Workforce Members</h2>
+
+                <p>
+                    Select an employee to open their AI assessment.
+                </p>
+
+            </div>
+
+            <span
+                id="pageInfo"
+                class="table-page-info"
+            ></span>
+
+        </div>
+
+
+        <div class="employee-table-wrapper">
+
+            <table class="employee-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Employee ID</th>
+
+                        <th>Department</th>
+
+                        <th>Job Role</th>
+
+                        <th>Level</th>
+
+                        <th>Years</th>
+
+                        <th>Performance</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="employeeTableBody">
+
+                    <tr>
+
+                        <td colspan="7">
+
+                            <div class="empty-state roster-loading">
+
+                                <div class="loading-ring"></div>
+
+                                <h3>
+                                    Loading employees
+                                </h3>
+
+                                <p>
+                                    Retrieving workforce records...
+                                </p>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- PAGINATION -->
+        <div class="employee-pagination">
+
+            <button
+                id="previousPage"
+                type="button"
+                class="btn btn-secondary"
+            >
+                <i data-lucide="chevron-left"></i>
+                Previous
+            </button>
+
+
+            <div
+                id="paginationText"
+                class="pagination-center"
+            >
+                —
+            </div>
+
+
+            <button
+                id="nextPage"
+                type="button"
+                class="btn btn-secondary"
+            >
+                Next
+                <i data-lucide="chevron-right"></i>
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         EMPLOYEE ASSESSMENT
+    ========================== -->
+    <section
+        id="employeePanel"
+        class="employee-assessment-panel hidden"
+    >
+
+        <!-- PANEL HEADER -->
+        <div class="assessment-panel-header">
+
+            <div>
+
+                <span class="section-kicker">
+                    AI employee assessment
+                </span>
+
+                <h2>
+                    Employee Assessment
+                </h2>
+
+                <p id="selectedEmployeeId">
+                    Select an employee from the roster.
+                </p>
+
+            </div>
+
+
+            <button
+                id="closeEmployeePanel"
+                type="button"
+                class="icon-button"
+                title="Close employee assessment"
+                aria-label="Close employee assessment"
+            >
+                <i data-lucide="x"></i>
+            </button>
+
+        </div>
+
+
+        <!-- PANEL BODY -->
+        <div class="assessment-panel-body">
+
+
+            <!-- =========================
+                 PROFILE + ASSESSMENT
+            ========================== -->
+            <div class="assessment-main-grid">
+
+
+                <!-- PROFILE -->
+                <div class="assessment-profile-column">
+
+                    <div class="assessment-section-heading">
+
+                        <div class="assessment-heading-icon">
+                            <i data-lucide="user-round"></i>
+                        </div>
+
+                        <div>
+                            <h3>Employee Profile</h3>
+                            <p>
+                                Workforce attributes used for assessment.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="employeeProfile"
+                        class="employee-profile-grid"
+                    ></div>
+
+
+                    <div class="assessment-actions">
+
+                        <button
+                            id="runAssessment"
+                            type="button"
+                            class="btn btn-primary"
+                        >
+                            <i data-lucide="brain-circuit"></i>
+                            Run AI Assessment
+                        </button>
+
+
+                        <button
+                            id="explainAssessment"
+                            type="button"
+                            class="btn btn-secondary"
+                            disabled
+                        >
+                            <i data-lucide="sparkles"></i>
+                            Explain Prediction
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ASSESSMENT RESULTS -->
+                <div class="assessment-results-column">
+
+                    <div class="assessment-section-heading">
+
+                        <div class="assessment-heading-icon result-heading-icon">
+                            <i data-lucide="activity"></i>
+                        </div>
+
+                        <div>
+                            <h3>AI Assessment</h3>
+                            <p>
+                                Model-based workforce decision-support signals.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- RESULT CARDS -->
+                    <div class="employee-result-grid">
+
+
+                        <!-- ATTRITION -->
+                        <article class="employee-result-card">
+
+                            <div class="employee-result-label">
+                                Attrition Risk
+                            </div>
+
+                            <div
+                                id="employeeRisk"
+                                class="employee-result-value"
+                            >
+                                --
+                            </div>
+
+                            <span
+                                id="employeeRiskBadge"
+                                class="badge badge-medium"
+                            >
+                                Not Assessed
+                            </span>
+
+                            <div
+                                id="employeeRiskThreshold"
+                                class="employee-result-meta"
+                            ></div>
+
+                        </article>
+
+
+                        <!-- PERFORMANCE -->
+                        <article class="employee-result-card">
+
+                            <div class="employee-result-label">
+                                Performance Prediction
+                            </div>
+
+                            <div
+                                id="employeePerformance"
+                                class="employee-result-value performance-result-value"
+                            >
+                                --
+                            </div>
+
+                            <div
+                                id="employeePerformanceLabel"
+                                class="employee-result-description"
+                            >
+                                Not Assessed
+                            </div>
+
+                            <div
+                                id="employeePerformanceConfidence"
+                                class="employee-result-meta"
+                            ></div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- RISK INDICATOR -->
+                    <div
+                        id="employeeRiskIndicator"
+                        class="employee-risk-indicator"
+                    >
+
+                        <div class="risk-indicator-header">
+
+                            <span>
+                                Attrition Probability
+                            </span>
+
+                            <strong id="employeeRiskPercent">
+                                --
+                            </strong>
+
+                        </div>
+
+                        <div class="progress-track">
+
+                            <div
+                                id="employeeRiskBar"
+                                class="progress-fill"
+                                style="width:0%;"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- HR ACTIONS -->
+                    <div
+                        id="employeeRecommendations"
+                        class="employee-action-center"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 HR POLICY INTELLIGENCE
+            ========================== -->
+            <div
+                id="employeePolicies"
+                class="employee-policy-section"
+            ></div>
+
+
+            <!-- =========================
+                 SHAP EXPLANATION
+            ========================== -->
+            <div
+                id="employeeExplanation"
+                class="employee-explanation-section"
+            ></div>
+
+
+            <!-- DISCLAIMER -->
+            <div class="employee-disclaimer">
+
+                <i data-lucide="info"></i>
+
+                <span>
+                    AI assessments, recommendations, and explanations
+                    are decision-support signals and should not be used
+                    as the sole basis for employment decisions.
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script src="{{ url_for(
+    'static',
+    filename='js/employees.js'
+) }}"></script>
+
+{% endblock %}

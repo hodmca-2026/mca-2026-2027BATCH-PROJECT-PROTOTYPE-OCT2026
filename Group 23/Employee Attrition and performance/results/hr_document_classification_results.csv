@@ -1,0 +1,6 @@
+document,actual_category,predicted_category
+leave_policy.txt,leave,leave
+health_insurance.txt,benefits,benefits
+training_policy.txt,training,training
+overtime_policy.txt,compensation,compensation
+performance_review.txt,performance,performance

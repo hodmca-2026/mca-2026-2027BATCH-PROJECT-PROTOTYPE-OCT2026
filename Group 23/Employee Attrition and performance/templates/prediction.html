@@ -1,0 +1,844 @@
+{% extends "base.html" %}
+
+{% block title %}Prediction Lab | HR Insight AI{% endblock %}
+{% block page_name %}Prediction Lab{% endblock %}
+
+{% block content %}
+
+<div class="prediction-page">
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+    <section class="prediction-hero">
+
+        <div>
+            <div class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                AI workforce assessment
+            </div>
+
+            <h1>Employee Prediction Lab</h1>
+
+            <p>
+                Build an employee profile and generate model-based
+                attrition risk, performance prediction, and HR
+                decision-support recommendations.
+            </p>
+        </div>
+
+        <div class="prediction-hero-badge">
+            <span class="prediction-live-dot"></span>
+            AI Model Ready
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MAIN WORKSPACE
+    ========================== -->
+    <div class="prediction-workspace">
+
+
+        <!-- =========================
+             LEFT — EMPLOYEE FORM
+        ========================== -->
+        <section class="prediction-form-card">
+
+            <div class="prediction-card-header">
+
+                <div>
+                    <span class="section-kicker">
+                        Employee profile
+                    </span>
+
+                    <h2>
+                        Employee Information
+                    </h2>
+
+                    <p>
+                        Complete the profile before running
+                        the prediction models.
+                    </p>
+                </div>
+
+                <div class="form-step">
+                    PROFILE
+                </div>
+
+            </div>
+
+
+            <form id="predictionForm">
+
+
+                <!-- =========================
+                     PERSONAL INFORMATION
+                ========================== -->
+                <div class="form-section">
+
+                    <div class="form-section-heading">
+
+                        <div class="form-section-icon">
+                            <i data-lucide="user-round"></i>
+                        </div>
+
+                        <div>
+                            <h3>Personal Information</h3>
+                            <p>Basic employee profile details</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="prediction-form-grid">
+
+                        <div class="form-group">
+                            <label class="form-label">Age</label>
+                            <input
+                                type="number"
+                                name="age"
+                                class="form-control"
+                                value="35"
+                                min="18"
+                                max="70"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Gender</label>
+                            <select
+                                name="gender"
+                                class="form-control"
+                                required
+                            >
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Non-binary</option>
+                                <option>Prefer not to say</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Marital Status</label>
+                            <select
+                                name="marital_status"
+                                class="form-control"
+                            >
+                                <option>Single</option>
+                                <option>Married</option>
+                                <option>Divorced</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Education Level</label>
+                            <select
+                                name="education_level"
+                                class="form-control"
+                            >
+                                <option>Bachelors</option>
+                                <option>Masters</option>
+                                <option>PhD</option>
+                                <option>High School</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     ROLE & COMPENSATION
+                ========================== -->
+                <div class="form-section">
+
+                    <div class="form-section-heading">
+
+                        <div class="form-section-icon">
+                            <i data-lucide="briefcase-business"></i>
+                        </div>
+
+                        <div>
+                            <h3>Role & Compensation</h3>
+                            <p>Organizational and career information</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="prediction-form-grid">
+
+                        <div class="form-group">
+                            <label class="form-label">Department</label>
+                            <select
+                                name="department"
+                                class="form-control"
+                            >
+                                <option>Engineering</option>
+                                <option>Finance</option>
+                                <option>Human Resources</option>
+                                <option>Marketing</option>
+                                <option>Operations</option>
+                                <option>Research & Development</option>
+                                <option>Sales</option>
+                                <option>Customer Support</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group form-group-wide">
+                            <label class="form-label">Job Role</label>
+                            <select
+                                name="job_role"
+                                class="form-control"
+                            >
+                                <option>Software Engineer</option>
+                                <option>Data Engineer</option>
+                                <option>Engineering Manager</option>
+                                <option>Financial Analyst</option>
+                                <option>Finance Manager</option>
+                                <option>Accountant</option>
+                                <option>Marketing Specialist</option>
+                                <option>Growth Manager</option>
+                                <option>Operations Analyst</option>
+                                <option>Operations Manager</option>
+                                <option>HR Business Partner</option>
+                                <option>HR Manager</option>
+                                <option>Recruiter</option>
+                                <option>Customer Success Manager</option>
+                                <option>Support Specialist</option>
+                                <option>Support Team Lead</option>
+                                <option>Sales Manager</option>
+                                <option>Sales Development Rep</option>
+                                <option>Account Executive</option>
+                                <option>Content Strategist</option>
+                                <option>Product Researcher</option>
+                                <option>Program Manager</option>
+                                <option>QA Engineer</option>
+                                <option>R&D Manager</option>
+                                <option>Research Scientist</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Job Level</label>
+                            <select
+                                name="job_level"
+                                class="form-control"
+                            >
+                                <option>1</option>
+                                <option>2</option>
+                                <option selected>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Monthly Income</label>
+                            <input
+                                type="number"
+                                name="monthly_income"
+                                class="form-control"
+                                value="7000"
+                                min="0"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Stock Option Level</label>
+                            <select
+                                name="stock_option_level"
+                                class="form-control"
+                            >
+                                <option>0</option>
+                                <option>1</option>
+                                <option selected>2</option>
+                                <option>3</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Salary Hike (%)</label>
+                            <input
+                                type="number"
+                                name="salary_hike_pct"
+                                class="form-control"
+                                value="8"
+                                step="0.1"
+                                min="0"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Years at Company</label>
+                            <input
+                                type="number"
+                                name="years_at_company"
+                                class="form-control"
+                                value="5"
+                                min="0"
+                                step="0.1"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Total Working Years</label>
+                            <input
+                                type="number"
+                                name="total_working_years"
+                                class="form-control"
+                                value="10"
+                                min="0"
+                                step="0.1"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Years Since Promotion</label>
+                            <input
+                                type="number"
+                                name="years_since_promotion"
+                                class="form-control"
+                                value="2"
+                                min="0"
+                                step="0.1"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Prior Companies</label>
+                            <input
+                                type="number"
+                                name="num_prior_companies"
+                                class="form-control"
+                                value="2"
+                                min="0"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     WORK ENVIRONMENT
+                ========================== -->
+                <div class="form-section">
+
+                    <div class="form-section-heading">
+
+                        <div class="form-section-icon">
+                            <i data-lucide="building-2"></i>
+                        </div>
+
+                        <div>
+                            <h3>Work Environment</h3>
+                            <p>Work pattern, travel, and workload</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="prediction-form-grid">
+
+                        <div class="form-group">
+                            <label class="form-label">Work Mode</label>
+                            <select
+                                name="work_mode"
+                                class="form-control"
+                            >
+                                <option>Hybrid</option>
+                                <option>Onsite</option>
+                                <option>Remote</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Commute Time (minutes)</label>
+                            <input
+                                type="number"
+                                name="commute_minutes"
+                                class="form-control"
+                                value="30"
+                                min="0"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Overtime Hours / Week</label>
+                            <input
+                                type="number"
+                                name="overtime_hours_per_week"
+                                class="form-control"
+                                value="8"
+                                min="0"
+                                step="0.1"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Business Travel Days / Year</label>
+                            <input
+                                type="number"
+                                name="business_travel_days_per_year"
+                                class="form-control"
+                                value="15"
+                                min="0"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Training Hours</label>
+                            <input
+                                type="number"
+                                name="training_hours"
+                                class="form-control"
+                                value="25"
+                                min="0"
+                                step="0.1"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Manager Support Score</label>
+                            <input
+                                type="number"
+                                name="manager_support_score"
+                                class="form-control"
+                                value="7"
+                                min="1"
+                                max="10"
+                                step="0.1"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     ENGAGEMENT & WELLBEING
+                ========================== -->
+                <div class="form-section">
+
+                    <div class="form-section-heading">
+
+                        <div class="form-section-icon">
+                            <i data-lucide="heart-handshake"></i>
+                        </div>
+
+                        <div>
+                            <h3>Engagement & Wellbeing</h3>
+                            <p>Employee experience indicators</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="prediction-form-grid">
+
+                        <div class="form-group">
+                            <label class="form-label">Burnout Score</label>
+                            <input
+                                type="number"
+                                name="burnout_score"
+                                class="form-control"
+                                value="4"
+                                min="1"
+                                max="10"
+                                step="0.1"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Engagement Score</label>
+                            <input
+                                type="number"
+                                name="engagement_score"
+                                class="form-control"
+                                value="8"
+                                min="1"
+                                max="10"
+                                step="0.1"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Work-Life Balance Score</label>
+                            <input
+                                type="number"
+                                name="work_life_balance_score"
+                                class="form-control"
+                                value="7"
+                                min="1"
+                                max="10"
+                                step="0.1"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Last Review Score</label>
+                            <input
+                                type="number"
+                                name="last_review_score"
+                                class="form-control"
+                                value="8"
+                                min="1"
+                                max="10"
+                                step="0.1"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     PERFORMANCE & AI
+                ========================== -->
+                <div class="form-section">
+
+                    <div class="form-section-heading">
+
+                        <div class="form-section-icon">
+                            <i data-lucide="brain-circuit"></i>
+                        </div>
+
+                        <div>
+                            <h3>Performance & AI</h3>
+                            <p>Performance and AI-related workforce signals</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="prediction-form-grid">
+
+                        <div class="form-group">
+                            <label class="form-label">Performance Rating</label>
+                            <select
+                                name="performance_rating"
+                                class="form-control"
+                            >
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4" selected>4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Uses AI Tools at Work</label>
+                            <select
+                                name="uses_ai_tools_at_work"
+                                class="form-control"
+                            >
+                                <option value="True" selected>Yes</option>
+                                <option value="False">No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Perceived AI Job Risk</label>
+                            <input
+                                type="number"
+                                name="perceived_ai_job_risk"
+                                class="form-control"
+                                value="4"
+                                min="1"
+                                max="10"
+                                step="0.1"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     FORM ACTIONS
+                ========================== -->
+                <div class="prediction-form-actions">
+
+                    <button
+                        type="reset"
+                        class="btn btn-secondary"
+                    >
+                        <i data-lucide="rotate-ccw"></i>
+                        Reset
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary prediction-run-btn"
+                        id="predictButton"
+                    >
+                        <i data-lucide="brain-circuit"></i>
+                        Run AI Prediction
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- =========================
+             RIGHT — RESULTS
+        ========================== -->
+        <aside class="prediction-results">
+
+
+            <!-- ATTRITION -->
+            <section
+                class="prediction-result-card attrition-result"
+                id="attritionCard"
+            >
+
+                <div class="result-card-top">
+
+                    <div>
+                        <span class="section-kicker">
+                            Attrition intelligence
+                        </span>
+
+                        <h2>Attrition Risk</h2>
+
+                        <p>
+                            Deep learning prediction
+                        </p>
+                    </div>
+
+                    <span class="result-icon result-icon-danger">
+                        <i data-lucide="shield-alert"></i>
+                    </span>
+
+                </div>
+
+
+                <div class="risk-result-main">
+
+                    <div
+                        class="risk-result-value"
+                        id="attritionProbability"
+                    >
+                        --
+                    </div>
+
+                    <div
+                        id="riskBadge"
+                        class="badge badge-medium result-risk-badge"
+                    >
+                        Waiting
+                    </div>
+
+                </div>
+
+
+                <div class="result-progress-block">
+
+                    <div class="result-progress-label">
+                        <span>Risk probability</span>
+
+                        <strong id="riskPercentage">
+                            --
+                        </strong>
+                    </div>
+
+                    <div class="progress-track result-progress">
+                        <div
+                            id="riskBar"
+                            class="progress-fill"
+                            style="width:0%;"
+                        ></div>
+                    </div>
+
+                </div>
+
+
+                <div class="threshold-box">
+
+                    <div>
+                        <span>Model threshold</span>
+                        <strong id="thresholdValue">--</strong>
+                    </div>
+
+                    <i data-lucide="target"></i>
+
+                </div>
+
+            </section>
+
+
+            <!-- PERFORMANCE -->
+            <section class="prediction-result-card">
+
+                <div class="result-card-top">
+
+                    <div>
+                        <span class="section-kicker">
+                            Performance intelligence
+                        </span>
+
+                        <h2>Performance Prediction</h2>
+
+                        <p>
+                            4-class deep learning model
+                        </p>
+                    </div>
+
+                    <span class="result-icon result-icon-cyan">
+                        <i data-lucide="gauge"></i>
+                    </span>
+
+                </div>
+
+
+                <div class="performance-result-main">
+
+                    <div
+                        id="performanceRating"
+                        class="performance-rating"
+                    >
+                        --
+                    </div>
+
+                    <div
+                        id="performanceLabel"
+                        class="performance-label"
+                    >
+                        Waiting for prediction
+                    </div>
+
+                </div>
+
+
+                <div class="result-progress-block">
+
+                    <div class="result-progress-label">
+                        <span>Confidence</span>
+
+                        <strong id="performanceConfidence">
+                            --
+                        </strong>
+                    </div>
+
+                    <div class="progress-track result-progress">
+                        <div
+                            id="performanceBar"
+                            class="progress-fill"
+                            style="width:0%;"
+                        ></div>
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="performanceProbabilities"
+                    class="performance-probabilities"
+                ></div>
+
+            </section>
+
+
+            <!-- RECOMMENDATIONS -->
+            <section class="prediction-result-card">
+
+                <div class="result-card-top">
+
+                    <div>
+                        <span class="section-kicker">
+                            Decision support
+                        </span>
+
+                        <h2>HR Recommendations</h2>
+
+                        <p>
+                            AI-assisted action suggestions
+                        </p>
+                    </div>
+
+                    <span class="result-icon result-icon-indigo">
+                        <i data-lucide="lightbulb"></i>
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="recommendations"
+                    class="recommendations-container"
+                >
+
+                    <div class="empty-state">
+
+                        <i data-lucide="sparkles"></i>
+
+                        <h3>
+                            No prediction yet
+                        </h3>
+
+                        <p>
+                            Run the prediction model to generate
+                            HR recommendations.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- NOTICE -->
+            <div class="prediction-disclaimer">
+
+                <i data-lucide="info"></i>
+
+                <span>
+                    Predictions are decision-support signals and should
+                    not be used as the sole basis for employment decisions.
+                </span>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script src="{{ url_for('static', filename='js/prediction.js') }}"></script>
+
+{% endblock %}

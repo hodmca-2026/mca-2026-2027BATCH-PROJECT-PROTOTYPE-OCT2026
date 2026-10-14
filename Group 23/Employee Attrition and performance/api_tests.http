@@ -1,0 +1,301 @@
+### ============================================================
+### HR Attrition AI — REST API Test File
+### Open in VS Code with the "REST Client" extension installed.
+### Click "Send Request" above each block to test endpoints.
+### ============================================================
+
+@base = http://127.0.0.1:5000
+
+
+# ==============================================================
+# HEALTH CHECK
+# ==============================================================
+
+### Health Check
+GET {{base}}/api/health
+Content-Type: application/json
+
+
+# ==============================================================
+# SINGLE PREDICTION
+# ==============================================================
+
+### Single Employee Prediction
+POST {{base}}/api/predict
+Content-Type: application/json
+
+{
+  "age": 32,
+  "gender": "Male",
+  "marital_status": "Single",
+  "education_level": "Bachelors",
+  "department": "Engineering",
+  "job_role": "Software Engineer",
+  "job_level": 2,
+  "monthly_income": 75000,
+  "stock_option_level": 1,
+  "salary_hike_pct": 10,
+  "years_at_company": 3,
+  "total_working_years": 6,
+  "years_since_promotion": 2,
+  "num_prior_companies": 2,
+  "work_mode": "Hybrid",
+  "commute_minutes": 30,
+  "overtime_hours_per_week": 12,
+  "business_travel_days_per_year": 15,
+  "training_hours": 20,
+  "manager_support_score": 6,
+  "burnout_score": 7,
+  "engagement_score": 4,
+  "work_life_balance_score": 5,
+  "performance_rating": 3,
+  "last_review_score": 6.5,
+  "uses_ai_tools_at_work": true,
+  "perceived_ai_job_risk": 6
+}
+
+
+### Prediction — Validation Error (age out of range)
+POST {{base}}/api/predict
+Content-Type: application/json
+
+{
+  "age": 200,
+  "gender": "Male",
+  "department": "Engineering",
+  "job_role": "Software Engineer",
+  "job_level": 2,
+  "monthly_income": 75000,
+  "performance_rating": 3
+}
+
+
+# ==============================================================
+# BATCH PREDICTION
+# ==============================================================
+
+### Batch Prediction (2 employees)
+POST {{base}}/api/predict/batch
+Content-Type: application/json
+
+{
+  "employees": [
+    {
+      "employee_id": "EMP001",
+      "age": 32,
+      "gender": "Male",
+      "marital_status": "Single",
+      "education_level": "Bachelors",
+      "department": "Engineering",
+      "job_role": "Software Engineer",
+      "job_level": 2,
+      "monthly_income": 75000,
+      "stock_option_level": 1,
+      "salary_hike_pct": 10,
+      "years_at_company": 3,
+      "total_working_years": 6,
+      "years_since_promotion": 2,
+      "num_prior_companies": 2,
+      "work_mode": "Hybrid",
+      "commute_minutes": 30,
+      "overtime_hours_per_week": 12,
+      "business_travel_days_per_year": 15,
+      "training_hours": 20,
+      "manager_support_score": 6,
+      "burnout_score": 7,
+      "engagement_score": 4,
+      "work_life_balance_score": 5,
+      "performance_rating": 3,
+      "last_review_score": 6.5,
+      "uses_ai_tools_at_work": true,
+      "perceived_ai_job_risk": 6
+    },
+    {
+      "employee_id": "EMP002",
+      "age": 45,
+      "gender": "Female",
+      "marital_status": "Married",
+      "education_level": "Masters",
+      "department": "Finance",
+      "job_role": "Finance Manager",
+      "job_level": 4,
+      "monthly_income": 150000,
+      "stock_option_level": 2,
+      "salary_hike_pct": 15,
+      "years_at_company": 10,
+      "total_working_years": 18,
+      "years_since_promotion": 1,
+      "num_prior_companies": 3,
+      "work_mode": "Onsite",
+      "commute_minutes": 45,
+      "overtime_hours_per_week": 5,
+      "business_travel_days_per_year": 30,
+      "training_hours": 40,
+      "manager_support_score": 9,
+      "burnout_score": 3,
+      "engagement_score": 8,
+      "work_life_balance_score": 8,
+      "performance_rating": 5,
+      "last_review_score": 9.2,
+      "uses_ai_tools_at_work": false,
+      "perceived_ai_job_risk": 2
+    }
+  ]
+}
+
+
+# ==============================================================
+# EMPLOYEES
+# ==============================================================
+
+### List All Employees (page 1)
+GET {{base}}/api/employees?page=1&per_page=10
+Content-Type: application/json
+
+
+### Search Employees by Department
+GET {{base}}/api/employees?department=Engineering&page=1&per_page=5
+Content-Type: application/json
+
+
+### Get Single Employee
+GET {{base}}/api/employees/EMP001
+Content-Type: application/json
+
+
+# ==============================================================
+# ACTION CENTER (Prediction + HR Document Recommendations)
+# ==============================================================
+
+### Action Center for Employee EMP001
+POST {{base}}/api/employees/EMP001/action-center
+Content-Type: application/json
+
+
+# ==============================================================
+# BUSINESS KPIs
+# ==============================================================
+
+### Employee Business KPI
+POST {{base}}/api/employees/EMP001/business-kpi
+Content-Type: application/json
+
+
+### Workforce Business KPI (entire company)
+GET {{base}}/api/workforce/business-kpi
+Content-Type: application/json
+
+
+# ==============================================================
+# DASHBOARD
+# ==============================================================
+
+### Dashboard KPIs
+GET {{base}}/api/dashboard
+Content-Type: application/json
+
+
+# ==============================================================
+# HR KNOWLEDGE SEARCH
+# ==============================================================
+
+### BM25 Search
+POST {{base}}/api/search
+Content-Type: application/json
+
+{
+  "query": "employee burnout overtime wellbeing",
+  "method": "bm25",
+  "top_k": 5
+}
+
+
+### TF-IDF Search
+POST {{base}}/api/search
+Content-Type: application/json
+
+{
+  "query": "performance improvement plan",
+  "method": "tfidf",
+  "top_k": 5
+}
+
+
+### Language Model Search
+POST {{base}}/api/search
+Content-Type: application/json
+
+{
+  "query": "career progression promotion opportunities",
+  "method": "language_model",
+  "top_k": 5
+}
+
+
+# ==============================================================
+# RISK SIMULATION
+# ==============================================================
+
+### Simulate Intervention (reduce burnout, increase engagement)
+POST {{base}}/api/simulate
+Content-Type: application/json
+
+{
+  "employee_id": "EMP001",
+  "burnout_score": 3,
+  "engagement_score": 8,
+  "manager_support_score": 9,
+  "overtime_hours_per_week": 5
+}
+
+
+# ==============================================================
+# MODEL REGISTRY
+# ==============================================================
+
+### List All Models
+GET {{base}}/api/models
+Content-Type: application/json
+
+
+### Attrition Model Details
+GET {{base}}/api/models/attrition
+Content-Type: application/json
+
+
+### Performance Model Details
+GET {{base}}/api/models/performance
+Content-Type: application/json
+
+
+# ==============================================================
+# REPORTS & CACHE
+# ==============================================================
+
+### Download Full Risk Report CSV (all employees)
+GET {{base}}/api/export/risk-report
+Content-Type: application/json
+
+
+### Download High Risk Employees Only
+GET {{base}}/api/export/risk-report?risk_filter=high
+Content-Type: application/json
+
+
+### Download Engineering Department Report
+GET {{base}}/api/export/risk-report?department=engineering
+Content-Type: application/json
+
+
+### Invalidate Dashboard Cache
+POST {{base}}/api/cache/invalidate
+Content-Type: application/json
+
+
+# ==============================================================
+# SHAP EXPLANATION
+# ==============================================================
+
+### SHAP Explanation for Employee EMP001
+POST {{base}}/api/employees/EMP001/explain
+Content-Type: application/json

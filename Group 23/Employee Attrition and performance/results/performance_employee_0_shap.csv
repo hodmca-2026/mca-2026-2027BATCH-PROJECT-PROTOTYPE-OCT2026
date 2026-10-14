@@ -1,0 +1,68 @@
+Feature,SHAP_Value,Absolute_SHAP
+numeric__last_review_score,0.03622334878706075,0.03622334878706075
+numeric__perceived_ai_job_risk,0.022765534707946913,0.022765534707946913
+categorical__work_mode_Remote,0.017168835959382036,0.017168835959382036
+categorical__job_role_Financial Analyst,0.016168562517272254,0.016168562517272254
+categorical__department_Engineering,0.015956394295715513,0.015956394295715513
+categorical__job_role_QA Engineer,0.011963923023743049,0.011963923023743049
+categorical__job_role_Customer Success Manager,0.010897124810664655,0.010897124810664655
+categorical__job_role_Data Engineer,0.008518353385641065,0.008518353385641065
+categorical__job_role_Support Specialist,0.007539082651878135,0.007539082651878135
+categorical__department_Customer Support,-0.005550822418083121,0.005550822418083121
+numeric__age,0.0,0.0
+numeric__monthly_income,0.0,0.0
+numeric__job_level,0.0,0.0
+numeric__overtime_hours_per_week,0.0,0.0
+numeric__business_travel_days_per_year,0.0,0.0
+numeric__years_since_promotion,0.0,0.0
+numeric__stock_option_level,0.0,0.0
+numeric__years_at_company,0.0,0.0
+numeric__salary_hike_pct,0.0,0.0
+numeric__uses_ai_tools_at_work,0.0,0.0
+numeric__work_life_balance_score,0.0,0.0
+numeric__engagement_score,0.0,0.0
+categorical__gender_Female,0.0,0.0
+categorical__gender_Prefer not to say,0.0,0.0
+categorical__marital_status_Divorced,0.0,0.0
+categorical__gender_Male,0.0,0.0
+categorical__gender_Non-binary,0.0,0.0
+categorical__marital_status_Single,0.0,0.0
+categorical__marital_status_Married,0.0,0.0
+numeric__manager_support_score,0.0,0.0
+numeric__training_hours,0.0,0.0
+numeric__burnout_score,0.0,0.0
+numeric__num_prior_companies,0.0,0.0
+numeric__commute_minutes,0.0,0.0
+numeric__total_working_years,0.0,0.0
+categorical__department_Human Resources,0.0,0.0
+categorical__department_Finance,0.0,0.0
+categorical__education_level_Masters,0.0,0.0
+categorical__education_level_PhD,0.0,0.0
+categorical__education_level_High School,0.0,0.0
+categorical__education_level_Bachelors,0.0,0.0
+categorical__department_Sales,0.0,0.0
+categorical__department_Marketing,0.0,0.0
+categorical__job_role_Content Strategist,0.0,0.0
+categorical__job_role_Accountant,0.0,0.0
+categorical__job_role_Engineering Manager,0.0,0.0
+categorical__job_role_Finance Manager,0.0,0.0
+categorical__job_role_Growth Manager,0.0,0.0
+categorical__job_role_Account Executive,0.0,0.0
+categorical__department_Research & Development,0.0,0.0
+categorical__department_Operations,0.0,0.0
+categorical__job_role_Marketing Specialist,0.0,0.0
+categorical__job_role_HR Manager,0.0,0.0
+categorical__job_role_HR Business Partner,0.0,0.0
+categorical__job_role_Operations Analyst,0.0,0.0
+categorical__job_role_Program Manager,0.0,0.0
+categorical__job_role_R&D Manager,0.0,0.0
+categorical__job_role_Product Researcher,0.0,0.0
+categorical__job_role_Operations Manager,0.0,0.0
+categorical__job_role_Research Scientist,0.0,0.0
+categorical__job_role_Recruiter,0.0,0.0
+categorical__job_role_Sales Manager,0.0,0.0
+categorical__job_role_Sales Development Rep,0.0,0.0
+categorical__job_role_Software Engineer,0.0,0.0
+categorical__job_role_Support Team Lead,0.0,0.0
+categorical__work_mode_Hybrid,0.0,0.0
+categorical__work_mode_Onsite,0.0,0.0

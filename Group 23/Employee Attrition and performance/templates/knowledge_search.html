@@ -1,0 +1,1233 @@
+{% extends "base.html" %}
+
+{% block title %}HR Knowledge | HR Insight AI{% endblock %}
+
+{% block page_name %}HR Knowledge{% endblock %}
+
+{% block content %}
+
+<div class="knowledge-page">
+
+    <section class="knowledge-hero">
+
+        <div>
+
+            <div class="eyebrow">
+
+                <span class="eyebrow-dot"></span>
+
+                Information Retrieval Workspace
+
+            </div>
+
+            <h1>HR Knowledge Intelligence</h1>
+
+            <p>Search, rank, evaluate and inspect relevant HR knowledge using classical Information Retrieval models.
+
+            </p>
+
+        </div>
+
+        <div class="knowledge-status">
+
+            <span class="knowledge-status-dot"></span>
+
+            {% if document_count %}{{ document_count }} HR documents in collection{% else %}HR document collection{%
+            endif %}
+
+        </div>
+
+    </section>
+
+    <section class="knowledge-search-card ir-pipeline-panel">
+
+        <div class="knowledge-search-header">
+
+            <div>
+
+                <span class="section-kicker">IR Concept Coverage</span>
+
+                <h2>Search Engine Pipeline</h2>
+
+                <p>Explore the concepts used to process queries, index documents, rank results and extract HR knowledge.
+
+                </p>
+
+            </div>
+
+            <span class="ir-engine-chip"><i data-lucide="network"></i> IR Pipeline</span>
+
+        </div>
+
+        <div class="ir-pipeline-grid">
+
+            <article class="ir-pipeline-item"><small>01</small><strong>Query Processing</strong><span>Tokenization,
+
+                    stopwords and stemming</span></article>
+
+            <article class="ir-pipeline-item"><small>02</small><strong>Inverted Index</strong><span>Terms mapped to
+
+                    document postings</span></article>
+
+            <article class="ir-pipeline-item"><small>03</small><strong>Ranking Models</strong><span>TF-IDF, BM25 and
+
+                    Language Model</span></article>
+
+            <article class="ir-pipeline-item"><small>04</small><strong>Passage Retrieval</strong><span>Retrieve relevant
+
+                    text passages</span></article>
+
+            <article class="ir-pipeline-item"><small>05</small><strong>Evaluation</strong><span>Precision@K, Recall, F1
+
+                    and MRR</span></article>
+
+            <article class="ir-pipeline-item"><small>06</small><strong>IR Applications</strong><span>Information
+
+                    extraction and recommendation</span></article>
+
+        </div>
+
+    </section>
+
+    <section class="knowledge-search-card">
+
+        <div class="knowledge-search-header">
+
+            <div>
+
+                <span class="section-kicker">Retrieval Engine</span>
+
+                <h2>Search HR Knowledge Base</h2>
+
+                <p>Choose a retrieval model and enter an HR-related query.</p>
+
+            </div>
+
+            <span class="ir-engine-chip"><i data-lucide="database"></i> Inverted Index</span>
+
+        </div>
+
+        <div class="knowledge-search-controls">
+
+            <div class="knowledge-search-input">
+
+                <i data-lucide="search"></i>
+
+                <input id="searchInput" type="text" class="form-control"
+                    placeholder="Search promotion, overtime, training, benefits..." autocomplete="off">
+
+            </div>
+
+            <div class="knowledge-method-select">
+
+                <select id="searchMethod" class="form-control" aria-label="Retrieval method">
+
+                    <option value="bm25">BM25</option>
+
+                    <option value="tfidf">TF-IDF</option>
+
+                    <option value="language_model">Language Model</option>
+
+                </select>
+
+            </div>
+
+            <button id="searchButton" type="button" class="btn btn-primary knowledge-search-button">
+
+                <i data-lucide="search"></i> Search
+
+            </button>
+
+        </div>
+
+        <div class="retrieval-methods">
+
+            <button type="button" class="retrieval-method active" data-method="bm25">
+
+                <span class="retrieval-method-icon"><i data-lucide="bar-chart-3"></i></span>
+
+                <span><strong>BM25</strong><small>Probabilistic ranking</small></span>
+
+            </button>
+
+            <button type="button" class="retrieval-method" data-method="tfidf">
+
+                <span class="retrieval-method-icon"><i data-lucide="scan-text"></i></span>
+
+                <span><strong>TF-IDF</strong><small>Term-weighted retrieval</small></span>
+
+            </button>
+
+            <button type="button" class="retrieval-method" data-method="language_model">
+
+                <span class="retrieval-method-icon"><i data-lucide="brain"></i></span>
+
+                <span><strong>Language Model</strong><small>Query-likelihood ranking</small></span>
+
+            </button>
+
+        </div>
+
+        <div class="quick-search-section">
+
+            <span class="quick-search-label">Suggested Queries</span>
+
+            <div class="quick-search-list">
+
+                <button type="button" class="quick-search" data-query="promotion policy">Promotion Policy</button>
+
+                <button type="button" class="quick-search" data-query="overtime">Overtime</button>
+
+                <button type="button" class="quick-search" data-query="training">Training</button>
+
+                <button type="button" class="quick-search" data-query="employee benefits">Employee Benefits</button>
+
+                <button type="button" class="quick-search" data-query="performance review">Performance Review</button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <div id="searchStatus" class="knowledge-search-status" aria-live="polite"></div>
+
+    <section class="knowledge-results-section">
+
+        <div class="knowledge-results-heading">
+
+            <div><span class="section-kicker">Ranked Retrieval</span>
+
+                <h2>Search Results</h2>
+
+            </div>
+
+            <span class="results-limit">Top 5 Results</span>
+
+        </div>
+
+        <div id="searchResults" class="knowledge-results-grid">
+
+            <article class="knowledge-empty-card">
+
+                <div class="knowledge-empty-icon"><i data-lucide="book-open-search"></i></div>
+
+                <h3>Search the HR Knowledge Base</h3>
+
+                <p>Enter an HR-related query to retrieve and rank relevant policy documents.</p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- 
+     External website recommendations are independent of the local HR index. 
+    <section class="knowledge-search-card ir-analytics-section" id="relatedWebsitesSection"
+        aria-labelledby="relatedWebsitesTitle">
+        <div class="knowledge-search-header">
+            <div>
+                <span class="section-kicker">External Web Discovery</span>
+                <h2 id="relatedWebsitesTitle">Related Websites</h2>
+                <p>Discover external resources related to the same query. Open a result to visit its website in a new
+                    tab.</p>
+            </div>
+            <span class="ir-engine-chip"><i data-lucide="globe"></i> Web Search</span>
+        </div>
+        <div id="webSearchStatus" class="web-search-status" aria-live="polite">
+            Website recommendations will appear here when you search.
+        </div>
+        <div id="webSearchResults" class="web-search-results">
+            <div class="ir-placeholder">Run a search to find related external websites. This feature requires a
+                configured web search API key.</div>
+        </div>
+        <p class="web-search-disclaimer"></p>
+    </section> -->
+
+    <!-- The JavaScript inserts the entire comparison table into this DIV. -->
+
+    <section class="knowledge-search-card ir-analytics-section">
+
+        <div class="knowledge-search-header">
+
+            <div>
+
+                <span class="section-kicker">Ranking and Fusion</span>
+
+                <h2>Retrieval Model Comparison</h2>
+
+                <p>Compare document ranks, method agreement and Reciprocal Rank Fusion across retrieval methods.</p>
+
+            </div>
+
+            <span class="ir-engine-chip"><i data-lucide="git-compare"></i> Rank Comparison</span>
+
+        </div>
+
+        <div id="irComparisonTable" class="ir-comparison-container">
+
+            <div class="ir-placeholder">Run a search to compare retrieval rankings.</div>
+
+        </div>
+
+    </section>
+
+    <!-- Evaluation is displayed as a table, not metric cards. -->
+
+    <section class="knowledge-search-card ir-analytics-section">
+
+        <div class="knowledge-search-header">
+
+            <div>
+
+                <span class="section-kicker">Retrieval Evaluation</span>
+
+                <h2>IR Retrieval Evaluation</h2>
+
+                <p>Compare retrieval quality with Precision@5, Recall@5, F1 and Mean Reciprocal Rank.</p>
+
+            </div>
+
+            <span class="ir-engine-chip"><i data-lucide="badge-check"></i> P@5 · Recall · F1 · MRR</span>
+
+        </div>
+
+        <div id="irEvaluationGrid" class="ir-evaluation-container">
+
+            <div class="ir-placeholder">Search once to load the retrieval benchmark table.</div>
+
+        </div>
+
+        <p class="ir-footnote">Evaluation metrics use the configured HR relevance judgments. They are benchmark results,
+
+            not live-query relevance probabilities.</p>
+
+    </section>
+
+    <!-- Passages remain separate cards, not a table. -->
+
+    <section class="knowledge-search-card ir-analytics-section">
+
+        <div class="knowledge-search-header">
+
+            <div>
+
+                <span class="section-kicker">Passage Retrieval</span>
+
+                <h2>Most Relevant Passages</h2>
+
+                <p>Inspect the text fragments most closely related to the query, with their query-likelihood
+
+                    probability.</p>
+
+            </div>
+
+            <span class="ir-engine-chip"><i data-lucide="file-search"></i> Query Likelihood</span>
+
+        </div>
+
+        <div id="passageResults" class="ir-passage-container">
+
+            <div class="ir-placeholder">Run a search to retrieve ranked passages.</div>
+
+        </div>
+
+    </section>
+
+    <section class="knowledge-search-card ir-analytics-section">
+
+        <div class="knowledge-search-header">
+
+            <div>
+
+                <span class="section-kicker">Information Extraction</span>
+
+                <h2>Extracted HR Policy Information</h2>
+
+                <p>Inspect policy entities, numeric facts and important sentences extracted from the top-ranked
+
+                    document.</p>
+
+            </div>
+
+            <span class="ir-engine-chip"><i data-lucide="scan-search"></i> Rule-Based Extraction</span>
+
+        </div>
+
+        <div id="extractionContent" class="ir-extraction-container">
+
+            <div class="ir-placeholder">Search a policy to inspect extracted information.</div>
+
+        </div>
+
+    </section>
+
+    <div class="knowledge-note ir-score-note">
+
+        <i data-lucide="info"></i>
+
+        <span>BM25 and TF-IDF scores are ranking signals on their own scales. Language Model query probabilities are
+
+            calculated as exp(log-likelihood) and describe how likely the query is under a document or passage model;
+
+            they are not probabilities that a document is relevant. Results support HR review and do not replace human
+
+            judgement.</span>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<style>
+    .ir-pipeline-panel {
+
+        margin-bottom: 20px;
+
+    }
+
+    .ir-pipeline-grid {
+
+        display: grid;
+
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+
+        gap: 10px;
+
+        margin-top: 20px;
+
+    }
+
+    .ir-pipeline-item {
+
+        min-width: 0;
+
+        padding: 15px;
+
+        border: 1px solid rgba(148, 163, 184, .12);
+
+        border-radius: 12px;
+
+        background: rgba(15, 23, 42, .42);
+
+    }
+
+    .ir-pipeline-item small {
+
+        color: #64748b;
+
+        font-size: 10px;
+
+    }
+
+    .ir-pipeline-item strong {
+
+        display: block;
+
+        margin-top: 7px;
+
+        font-size: 12px;
+
+        overflow-wrap: anywhere;
+
+    }
+
+    .ir-pipeline-item span {
+
+        display: block;
+
+        margin-top: 5px;
+
+        color: #94a3b8;
+
+        font-size: 10px;
+
+        line-height: 1.6;
+
+        overflow-wrap: anywhere;
+
+    }
+
+    .ir-analytics-section {
+
+        margin-top: 22px;
+
+        min-width: 0;
+
+    }
+
+    .ir-comparison-container,
+
+    .ir-evaluation-container,
+
+    .ir-passage-container,
+
+    .ir-extraction-container {
+
+        width: 100%;
+
+        max-width: 100%;
+
+        min-width: 0;
+
+        margin-top: 18px;
+
+    }
+
+    .ir-comparison-table-wrap,
+
+    .ir-evaluation-table-wrap {
+
+        width: 100%;
+
+        max-width: 100%;
+
+        overflow-x: auto;
+
+        border: 1px solid rgba(148, 163, 184, .12);
+
+        border-radius: 12px;
+
+    }
+
+    .ir-comparison-table,
+
+    .ir-evaluation-table {
+
+        width: 100%;
+
+        min-width: 720px;
+
+        border-collapse: collapse;
+
+        background: rgba(15, 23, 42, .32);
+
+    }
+
+    .ir-comparison-table thead,
+
+    .ir-evaluation-table thead {
+
+        background: rgba(30, 41, 59, .55);
+
+    }
+
+    .ir-comparison-table th,
+
+    .ir-evaluation-table th {
+
+        padding: 14px;
+
+        color: #94a3b8;
+
+        font-size: 10px;
+
+        font-weight: 600;
+
+        text-align: center;
+
+        white-space: nowrap;
+
+        border-bottom: 1px solid rgba(148, 163, 184, .15);
+
+    }
+
+    .ir-comparison-table th:first-child,
+
+    .ir-comparison-table td:first-child,
+
+    .ir-evaluation-table th:first-child,
+
+    .ir-evaluation-table td:first-child {
+
+        text-align: left;
+
+    }
+
+    .ir-comparison-table td,
+
+    .ir-evaluation-table td {
+
+        padding: 14px;
+
+        text-align: center;
+
+        vertical-align: middle;
+
+        font-size: 11px;
+
+        border-bottom: 1px solid rgba(148, 163, 184, .09);
+
+    }
+
+    .ir-comparison-table tbody tr:last-child td,
+
+    .ir-evaluation-table tbody tr:last-child td {
+
+        border-bottom: none;
+
+    }
+
+    .ir-comparison-table tbody tr:hover,
+
+    .ir-evaluation-table tbody tr:hover {
+
+        background: rgba(99, 102, 241, .06);
+
+    }
+
+    .ir-score-subtext {
+
+        display: block;
+
+        margin-top: 5px;
+
+        color: #64748b;
+
+        font-size: 9px;
+
+        font-weight: 400;
+
+    }
+
+    .ir-agreement-pill {
+
+        display: inline-block;
+
+        padding: 5px 9px;
+
+        border: 1px solid rgba(129, 140, 248, .22);
+
+        border-radius: 20px;
+
+        color: #a5b4fc;
+
+        background: rgba(99, 102, 241, .08);
+
+        white-space: nowrap;
+
+    }
+
+    .ir-evaluation-method {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 8px;
+
+        font-weight: 600;
+
+        white-space: nowrap;
+
+    }
+
+    .ir-model-dot {
+
+        width: 7px;
+
+        height: 7px;
+
+        flex: 0 0 7px;
+
+        border-radius: 50%;
+
+        background: #818cf8;
+
+    }
+
+    .ir-evaluation-note {
+
+        margin-top: 12px;
+
+        color: #64748b;
+
+        font-size: 10px;
+
+        line-height: 1.6;
+
+    }
+
+    .ir-placeholder {
+
+        padding: 18px;
+
+        border: 1px solid rgba(148, 163, 184, .12);
+
+        border-radius: 10px;
+
+        color: #94a3b8;
+
+        font-size: 12px;
+
+        line-height: 1.7;
+
+    }
+
+    .ir-passage-container {
+
+        display: grid;
+
+        grid-template-columns: minmax(0, 1fr);
+
+        gap: 12px;
+
+    }
+
+    .ir-passage-card {
+
+        min-width: 0;
+
+        padding: 18px;
+
+        border: 1px solid rgba(148, 163, 184, .13);
+
+        border-radius: 12px;
+
+        background: rgba(15, 23, 42, .40);
+
+    }
+
+    .ir-passage-heading {
+
+        display: flex;
+
+        align-items: flex-start;
+
+        justify-content: space-between;
+
+        gap: 16px;
+
+    }
+
+    .ir-passage-rank {
+
+        color: #a5b4fc;
+
+        font-size: 10px;
+
+        text-transform: uppercase;
+
+        letter-spacing: .7px;
+
+    }
+
+    .ir-passage-heading h3 {
+
+        margin: 6px 0 4px;
+
+        font-size: 14px;
+
+        overflow-wrap: anywhere;
+
+    }
+
+    .ir-passage-meta {
+
+        color: #64748b;
+
+        font-size: 10px;
+
+    }
+
+    .ir-passage-probability {
+
+        flex: 0 0 auto;
+
+        text-align: right;
+
+    }
+
+    .ir-passage-probability small {
+
+        display: block;
+
+        color: #94a3b8;
+
+        font-size: 9px;
+
+    }
+
+    .ir-passage-probability strong {
+
+        display: block;
+
+        margin-top: 5px;
+
+        font-size: 15px;
+
+        color: #e2e8f0;
+
+    }
+
+    .ir-passage-text {
+
+        margin: 15px 0 0;
+
+        padding: 14px;
+
+        color: #cbd5e1;
+
+        font-size: 11px;
+
+        line-height: 1.8;
+
+        overflow-wrap: anywhere;
+
+        border-left: 2px solid rgba(129, 140, 248, .55);
+
+        background: rgba(15, 23, 42, .35);
+
+        border-radius: 0 9px 9px 0;
+
+    }
+
+    .ir-extraction-grid {
+
+        display: grid;
+
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+
+        gap: 14px;
+
+    }
+
+    .ir-extraction-card {
+
+        min-width: 0;
+
+        padding: 18px;
+
+        border: 1px solid rgba(148, 163, 184, .13);
+
+        border-radius: 12px;
+
+        background: rgba(15, 23, 42, .40);
+
+    }
+
+    .ir-extraction-card>span {
+
+        display: block;
+
+        margin-bottom: 10px;
+
+        color: #94a3b8;
+
+        font-size: 10px;
+
+        text-transform: uppercase;
+
+    }
+
+    .ir-extraction-card strong {
+
+        overflow-wrap: anywhere;
+
+    }
+
+    .ir-extraction-tags {
+
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 6px;
+
+    }
+
+    .ir-fact-list p {
+
+        margin: 8px 0;
+
+        font-size: 11px;
+
+        line-height: 1.6;
+
+        overflow-wrap: anywhere;
+
+    }
+
+    .ir-extracted-sentences {
+
+        margin-top: 14px;
+
+        padding: 18px;
+
+        border: 1px solid rgba(148, 163, 184, .13);
+
+        border-radius: 12px;
+
+        background: rgba(15, 23, 42, .40);
+
+    }
+
+    .ir-extracted-sentences h3 {
+
+        margin: 0;
+
+        font-size: 13px;
+
+    }
+
+    .ir-extracted-sentences p {
+
+        margin: 10px 0 0;
+
+        padding: 12px;
+
+        color: #cbd5e1;
+
+        font-size: 11px;
+
+        line-height: 1.7;
+
+        border: 1px solid rgba(148, 163, 184, .10);
+
+        border-radius: 9px;
+
+        overflow-wrap: anywhere;
+
+    }
+
+    .ir-score-note {
+
+        margin-top: 22px;
+
+    }
+
+    .ir-document-modal-backdrop {
+
+        position: fixed;
+
+        inset: 0;
+
+        z-index: 99999;
+
+        display: none;
+
+        align-items: center;
+
+        justify-content: center;
+
+        padding: 24px;
+
+        background: rgba(2, 6, 23, .78);
+
+        backdrop-filter: blur(6px);
+
+    }
+
+    .ir-document-modal {
+
+        width: min(920px, 96vw);
+
+        max-height: 90vh;
+
+        display: flex;
+
+        flex-direction: column;
+
+        overflow: hidden;
+
+        background: #0f172a;
+
+        border: 1px solid #1e293b;
+
+        border-radius: 16px;
+
+        box-shadow: 0 25px 80px rgba(0, 0, 0, .55);
+
+    }
+
+    .ir-document-modal-header {
+
+        display: flex;
+
+        align-items: flex-start;
+
+        justify-content: space-between;
+
+        gap: 16px;
+
+        padding: 20px 22px;
+
+        border-bottom: 1px solid #1e293b;
+
+    }
+
+    .ir-document-modal-header h2 {
+
+        margin: 0;
+
+        color: #f8fafc;
+
+        font-size: 18px;
+
+    }
+
+    .ir-document-modal-category {
+
+        margin-top: 6px;
+
+        color: #64748b;
+
+        font-size: 11px;
+
+    }
+
+    .ir-document-modal-close {
+
+        width: 36px;
+
+        height: 36px;
+
+        flex: 0 0 auto;
+
+        border: 1px solid #334155;
+
+        background: #1e293b;
+
+        color: #cbd5e1;
+
+        border-radius: 8px;
+
+        cursor: pointer;
+
+    }
+
+    .ir-document-modal-content {
+
+        flex: 1;
+
+        overflow: auto;
+
+        padding: 24px;
+
+        color: #cbd5e1;
+
+        font-size: 13px;
+
+        line-height: 1.8;
+
+        white-space: pre-wrap;
+
+        overflow-wrap: anywhere;
+
+    }
+
+    .ir-document-modal-footer {
+
+        display: flex;
+
+        justify-content: flex-end;
+
+        padding: 14px 22px;
+
+        border-top: 1px solid #1e293b;
+
+    }
+
+    .ir-score-explanation {
+
+        margin-top: 12px;
+
+        color: #94a3b8;
+
+        font-size: 10px;
+
+        line-height: 1.6;
+
+    }
+
+    .ir-result-actions {
+
+        margin-top: 18px;
+
+        display: flex;
+
+        justify-content: flex-end;
+
+    }
+
+    .ir-muted {
+
+        color: #64748b;
+
+        font-size: 10px;
+
+    }
+
+    @media (max-width:1100px) {
+
+        .ir-pipeline-grid {
+
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+
+        }
+
+    }
+
+    @media (max-width:900px) {
+
+        .ir-extraction-grid {
+
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        }
+
+    }
+
+    @media (max-width:650px) {
+
+        .ir-pipeline-grid {
+
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        }
+
+        .ir-passage-heading {
+
+            flex-direction: column;
+
+        }
+
+        .ir-passage-probability {
+
+            text-align: left;
+
+        }
+
+    }
+
+    @media (max-width:480px) {
+
+        .ir-pipeline-grid,
+
+        .ir-extraction-grid {
+
+            grid-template-columns: minmax(0, 1fr);
+
+        }
+
+    }
+
+
+
+    /* External website recommendations */
+    .web-search-status {
+        margin-top: 16px;
+        color: #94a3b8;
+        font-size: 11px;
+        line-height: 1.7;
+    }
+
+    .web-search-results {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 12px;
+    }
+
+    .web-search-result-card {
+        display: flex;
+        min-width: 0;
+        flex-direction: column;
+        gap: 10px;
+        padding: 18px;
+        border: 1px solid rgba(148, 163, 184, .14);
+        border-radius: 12px;
+        background: rgba(15, 23, 42, .40);
+    }
+
+    .web-search-result-topline {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-width: 0;
+        color: #94a3b8;
+        font-size: 10px;
+        overflow-wrap: anywhere;
+    }
+
+    .web-search-result-topline i {
+        flex: 0 0 auto;
+        width: 14px;
+        height: 14px;
+    }
+
+    .web-search-result-card h3 {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+    }
+
+    .web-search-result-card h3 a {
+        color: #e2e8f0;
+        text-decoration: none;
+    }
+
+    .web-search-result-card h3 a:hover {
+        color: #a5b4fc;
+        text-decoration: underline;
+    }
+
+    .web-search-description {
+        margin: 0;
+        color: #aab7c8;
+        font-size: 11px;
+        line-height: 1.75;
+        overflow-wrap: anywhere;
+    }
+
+    .web-search-result-footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: auto;
+        padding-top: 4px;
+    }
+
+    .web-search-open-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        color: #a5b4fc;
+        font-size: 11px;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .web-search-open-link:hover {
+        color: #c7d2fe;
+        text-decoration: underline;
+    }
+
+    .web-search-open-link i {
+        width: 14px;
+        height: 14px;
+    }
+
+    .web-search-disclaimer {
+        margin: 14px 0 0;
+        color: #64748b;
+        font-size: 10px;
+        line-height: 1.7;
+    }
+
+    @media (max-width: 760px) {
+        .web-search-results {
+            grid-template-columns: minmax(0, 1fr);
+        }
+    }
+</style>
+
+<script src="{{ url_for('static', filename='js/knowledge_search.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,79 @@
+# ==============================================================
+# .gitignore  —  Employee Attrition & Performance AI Project
+# ==============================================================
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.env
+.env.local
+.env.*.local
+# Keep the template
+!.env.example
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+logs/
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Python packaging
+build/
+dist/
+*.egg-info/
+*.egg
+MANIFEST
+
+# Coverage
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+
+# Testing
+.tox/
+
+# Large ML model files (store in cloud storage / DVC / Git LFS)
+# models/*.keras
+# models/*.pkl
+
+# Numpy processed arrays (regenerate with preprocess scripts)
+processed_data/*.npy
+
+# TensorFlow / Keras temp files
+*.keras.tmp
+*.h5.tmp
+*.joblib.tmp
+
+# Docker
+.dockerignore
+
+# Secrets & credentials
+*.pem
+*.key
+*.crt
+
+# Local data (do not push raw HR data to public repos)
+# data/

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}HR AI Decision Support{% endblock %}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+<!-- Mobile navigation overlay -->
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+<div class="app-shell">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar" id="appSidebar">
+
+        <div class="brand">
+            <div class="brand-icon">
+                <i data-lucide="brain-circuit"></i>
+            </div>
+
+            <div>
+                <h2>HR Insight AI</h2>
+                <span>Decision Support System</span>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <p class="sidebar-label">WORKSPACE</p>
+
+            <nav class="nav-menu">
+
+                <a href="/"
+                   class="nav-item {% if request.path == '/' %}active{% endif %}">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Overview</span>
+                </a>
+
+                <a href="/prediction"
+                   class="nav-item {% if request.path == '/prediction' %}active{% endif %}">
+                    <i data-lucide="scan-search"></i>
+                    <span>Prediction Lab</span>
+                </a>
+
+                <a href="/simulator"
+                   class="nav-item {% if request.path == '/simulator' %}active{% endif %}">
+                    <i data-lucide="sliders-horizontal"></i>
+                    <span>Risk Simulator</span>
+                </a>
+
+                <a href="/employees"
+                   class="nav-item {% if request.path == '/employees' %}active{% endif %}">
+                    <i data-lucide="users"></i>
+                    <span>Employee Roster</span>
+                </a>
+
+            </nav>
+        </div>
+
+        <div class="sidebar-section">
+            <p class="sidebar-label">INTELLIGENCE</p>
+
+            <nav class="nav-menu">
+
+                <a href="/knowledge-search"
+                   class="nav-item {% if request.path == '/knowledge-search' %}active{% endif %}">
+                    <i data-lucide="book-open-search"></i>
+                    <span>HR Knowledge</span>
+                </a>
+
+                <a href="/model-evidence"
+                   class="nav-item {% if request.path == '/model-evidence' %}active{% endif %}">
+                    <i data-lucide="chart-no-axes-combined"></i>
+                    <span>Model Evidence</span>
+                </a>
+
+            </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <div class="system-status">
+                <div class="status-dot"></div>
+
+                <div>
+                    <strong>AI System Online</strong>
+                    <span>Models loaded</span>
+                </div>
+            </div>
+
+            <div class="sidebar-version">
+                Employee Intelligence Platform
+                <br>
+                v1.0
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN AREA ================= -->
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <button class="mobile-menu-button" id="mobileMenuButton" type="button" aria-label="Open navigation" aria-controls="appSidebar" aria-expanded="false">
+                <i data-lucide="menu"></i>
+            </button>
+
+            <div class="breadcrumb">
+                <span>HR Intelligence</span>
+
+                <i data-lucide="chevron-right"></i>
+
+                <strong>
+                    {% block page_name %}Overview{% endblock %}
+                </strong>
+            </div>
+
+            <div class="topbar-right">
+
+                <div class="ai-status">
+                    <span class="pulse-dot"></span>
+                    AI Ready
+                </div>
+
+                <button class="icon-button" title="Notifications">
+                    <i data-lucide="bell"></i>
+                </button>
+
+                <div class="profile">
+
+                    <div class="profile-avatar">
+                        HR
+                    </div>
+
+                    <div class="profile-info">
+                        <strong>HR Manager</strong>
+                        <span>Administrator</span>
+                    </div>
+
+                    <i data-lucide="chevron-down"></i>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- PAGE CONTENT -->
+        <section class="page-content">
+
+            {% block content %}
+            {% endblock %}
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script>
+    lucide.createIcons();
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const button = document.getElementById("mobileMenuButton");
+        const sidebar = document.getElementById("appSidebar");
+        const backdrop = document.getElementById("sidebarBackdrop");
+
+        const setOpen = (open) => {
+            if (!sidebar || !backdrop || !button) return;
+            sidebar.classList.toggle("mobile-open", open);
+            backdrop.classList.toggle("visible", open);
+            document.body.classList.toggle("nav-open", open);
+            button.setAttribute("aria-expanded", String(open));
+        };
+
+        if (button) button.addEventListener("click", () => {
+            setOpen(!sidebar.classList.contains("mobile-open"));
+        });
+
+        if (backdrop) backdrop.addEventListener("click", () => setOpen(false));
+
+        document.querySelectorAll(".nav-item").forEach((item) => {
+            item.addEventListener("click", () => setOpen(false));
+        });
+    });
+</script>
+
+{% block scripts %}
+{% endblock %}
+
+</body>
+</html>

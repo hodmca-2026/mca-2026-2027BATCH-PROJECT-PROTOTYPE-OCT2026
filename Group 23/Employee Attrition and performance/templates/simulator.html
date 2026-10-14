@@ -1,0 +1,915 @@
+{% extends "base.html" %}
+
+{% block title %}Risk Simulator | HR Insight AI{% endblock %}
+{% block page_name %}Risk Simulator{% endblock %}
+
+{% block content %}
+
+<div class="simulator-page">
+
+    <!-- =========================
+         HERO
+    ========================== -->
+    <section class="simulator-hero">
+
+        <div>
+
+            <div class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                Workforce scenario intelligence
+            </div>
+
+            <h1>Risk Simulator</h1>
+
+            <p>
+                Explore how changes in workplace conditions may alter
+                the trained model's predicted attrition risk and
+                performance for an employee.
+            </p>
+
+        </div>
+
+        <div class="simulator-status">
+
+            <span class="status-dot"></span>
+
+            Decision Support Mode
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         EMPLOYEE SELECTION
+    ========================== -->
+    <section class="simulator-card">
+
+        <div class="simulator-card-header">
+
+            <div>
+
+                <span class="section-kicker">
+                    Scenario subject
+                </span>
+
+                <h2>Select Employee</h2>
+
+                <p>
+                    Choose an employee from the current workforce dataset.
+                </p>
+
+            </div>
+
+            <div class="simulator-step">
+                STEP 01
+            </div>
+
+        </div>
+
+
+        <div class="simulator-selector">
+
+            <div class="simulator-select-field">
+
+                <label for="employeeSelect">
+                    Employee
+                </label>
+
+                <div class="simulator-select-wrap">
+
+                    <i data-lucide="users"></i>
+
+                    <select id="employeeSelect">
+
+                        <option value="">
+                            Loading employees...
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="loadEmployeeBtn"
+                type="button"
+                class="btn btn-primary"
+                disabled
+            >
+                <i data-lucide="user-check"></i>
+                Load Profile
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROFILE
+    ========================== -->
+    <section
+        id="employeeProfileSection"
+        class="simulator-card hidden"
+    >
+
+        <div class="simulator-card-header">
+
+            <div>
+
+                <span class="section-kicker">
+                    Current workforce state
+                </span>
+
+                <h2>Employee Profile</h2>
+
+                <p id="selectedEmployeeText">
+                    Select an employee to begin.
+                </p>
+
+            </div>
+
+            <span class="profile-ready-chip">
+                Profile Loaded
+            </span>
+
+        </div>
+
+
+        <div
+            id="employeeProfile"
+            class="simulator-profile-grid"
+        ></div>
+
+    </section>
+
+
+    <!-- =========================
+         SIMULATION CONTROLS
+    ========================== -->
+    <section
+        id="simulationSection"
+        class="simulator-card hidden"
+    >
+
+        <div class="simulator-card-header">
+
+            <div>
+
+                <span class="section-kicker">
+                    Scenario design
+                </span>
+
+                <h2>Simulation Controls</h2>
+
+                <p>
+                    Adjust selected workplace factors and
+                    evaluate the model response.
+                </p>
+
+            </div>
+
+            <button
+                id="resetSimulationBtn"
+                type="button"
+                class="btn btn-secondary"
+            >
+                <i data-lucide="rotate-ccw"></i>
+                Reset
+            </button>
+
+        </div>
+
+
+        <div class="simulator-factor-grid">
+
+
+            <!-- BURNOUT -->
+            <div class="sim-factor">
+
+                <div class="sim-factor-heading">
+
+                    <div>
+
+                        <div class="sim-factor-title">
+                            Burnout Score
+                        </div>
+
+                        <div class="sim-factor-description">
+                            Lower score indicates less burnout signal.
+                        </div>
+
+                    </div>
+
+                    <output id="burnoutValue">
+                        0
+                    </output>
+
+                </div>
+
+                <input
+                    type="range"
+                    id="burnout"
+                    min="0"
+                    max="10"
+                    step="0.1"
+                    value="0"
+                >
+
+                <div class="range-labels">
+                    <span>0</span>
+                    <span>10</span>
+                </div>
+
+            </div>
+
+
+            <!-- ENGAGEMENT -->
+            <div class="sim-factor">
+
+                <div class="sim-factor-heading">
+
+                    <div>
+
+                        <div class="sim-factor-title">
+                            Engagement Score
+                        </div>
+
+                        <div class="sim-factor-description">
+                            Higher score indicates stronger engagement.
+                        </div>
+
+                    </div>
+
+                    <output id="engagementValue">
+                        0
+                    </output>
+
+                </div>
+
+                <input
+                    type="range"
+                    id="engagement"
+                    min="0"
+                    max="10"
+                    step="0.1"
+                    value="0"
+                >
+
+                <div class="range-labels">
+                    <span>0</span>
+                    <span>10</span>
+                </div>
+
+            </div>
+
+
+            <!-- MANAGER SUPPORT -->
+            <div class="sim-factor">
+
+                <div class="sim-factor-heading">
+
+                    <div>
+
+                        <div class="sim-factor-title">
+                            Manager Support
+                        </div>
+
+                        <div class="sim-factor-description">
+                            Higher score indicates stronger support.
+                        </div>
+
+                    </div>
+
+                    <output id="managerSupportValue">
+                        0
+                    </output>
+
+                </div>
+
+                <input
+                    type="range"
+                    id="managerSupport"
+                    min="0"
+                    max="10"
+                    step="0.1"
+                    value="0"
+                >
+
+                <div class="range-labels">
+                    <span>0</span>
+                    <span>10</span>
+                </div>
+
+            </div>
+
+
+            <!-- WORK-LIFE -->
+            <div class="sim-factor">
+
+                <div class="sim-factor-heading">
+
+                    <div>
+
+                        <div class="sim-factor-title">
+                            Work-Life Balance
+                        </div>
+
+                        <div class="sim-factor-description">
+                            Higher score indicates stronger balance.
+                        </div>
+
+                    </div>
+
+                    <output id="workLifeBalanceValue">
+                        0
+                    </output>
+
+                </div>
+
+                <input
+                    type="range"
+                    id="workLifeBalance"
+                    min="0"
+                    max="10"
+                    step="0.1"
+                    value="0"
+                >
+
+                <div class="range-labels">
+                    <span>0</span>
+                    <span>10</span>
+                </div>
+
+            </div>
+
+
+            <!-- OVERTIME -->
+            <div class="sim-factor">
+
+                <div class="sim-factor-heading">
+
+                    <div>
+
+                        <div class="sim-factor-title">
+                            Overtime Hours / Week
+                        </div>
+
+                        <div class="sim-factor-description">
+                            Represents workload pressure.
+                        </div>
+
+                    </div>
+
+                    <output id="overtimeValue">
+                        0
+                    </output>
+
+                </div>
+
+                <input
+                    type="range"
+                    id="overtime"
+                    min="0"
+                    max="40"
+                    step="0.1"
+                    value="0"
+                >
+
+                <div class="range-labels">
+                    <span>0h</span>
+                    <span>40h</span>
+                </div>
+
+            </div>
+
+
+            <!-- TRAINING -->
+            <div class="sim-factor">
+
+                <div class="sim-factor-heading">
+
+                    <div>
+
+                        <div class="sim-factor-title">
+                            Training Hours
+                        </div>
+
+                        <div class="sim-factor-description">
+                            Annual employee development investment.
+                        </div>
+
+                    </div>
+
+                    <output id="trainingValue">
+                        0
+                    </output>
+
+                </div>
+
+                <input
+                    type="range"
+                    id="training"
+                    min="0"
+                    max="100"
+                    step="1"
+                    value="0"
+                >
+
+                <div class="range-labels">
+                    <span>0h</span>
+                    <span>100h</span>
+                </div>
+
+            </div>
+
+
+            <!-- SALARY HIKE -->
+            <div class="sim-factor">
+
+                <div class="sim-factor-heading">
+
+                    <div>
+
+                        <div class="sim-factor-title">
+                            Salary Hike %
+                        </div>
+
+                        <div class="sim-factor-description">
+                            Annual compensation increase scenario.
+                        </div>
+
+                    </div>
+
+                    <output id="salaryHikeValue">
+                        0%
+                    </output>
+
+                </div>
+
+                <input
+                    type="range"
+                    id="salaryHike"
+                    min="0"
+                    max="30"
+                    step="0.1"
+                    value="0"
+                >
+
+                <div class="range-labels">
+                    <span>0%</span>
+                    <span>30%</span>
+                </div>
+
+            </div>
+
+
+            <!-- PROMOTION GAP -->
+            <div class="sim-factor">
+
+                <div class="sim-factor-heading">
+
+                    <div>
+
+                        <div class="sim-factor-title">
+                            Years Since Promotion
+                        </div>
+
+                        <div class="sim-factor-description">
+                            Career progression scenario.
+                        </div>
+
+                    </div>
+
+                    <output id="promotionGapValue">
+                        0
+                    </output>
+
+                </div>
+
+                <input
+                    type="range"
+                    id="promotionGap"
+                    min="0"
+                    max="15"
+                    step="0.1"
+                    value="0"
+                >
+
+                <div class="range-labels">
+                    <span>0y</span>
+                    <span>15y</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="simulation-actions">
+
+            <button
+                id="runSimulationBtn"
+                type="button"
+                class="btn btn-primary simulator-run-btn"
+            >
+                <i data-lucide="play"></i>
+                Run Simulation
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         RESULTS
+    ========================== -->
+    <section
+        id="resultsSection"
+        class="hidden"
+    >
+
+        <div class="simulator-results-heading">
+
+            <div>
+
+                <span class="section-kicker">
+                    Scenario outcome
+                </span>
+
+                <h2>Simulation Results</h2>
+
+                <p>
+                    Compare the employee's current state with
+                    the simulated scenario.
+                </p>
+
+            </div>
+
+            <span class="results-chip">
+                Model response
+            </span>
+
+        </div>
+
+
+        <!-- CURRENT / SIMULATED -->
+        <div class="simulator-result-grid">
+
+
+            <!-- CURRENT -->
+            <article class="sim-result-card">
+
+                <div class="sim-result-label">
+                    Current State
+                </div>
+
+                <div class="sim-result-risk">
+
+                    <span id="currentRisk">
+                        --
+                    </span>
+
+                    <small>
+                        Attrition Risk
+                    </small>
+
+                </div>
+
+                <div
+                    id="currentRiskBadge"
+                    class="risk-badge"
+                >
+                    --
+                </div>
+
+                <div class="sim-result-performance">
+
+                    <span id="currentPerformance">
+                        --
+                    </span>
+
+                    <small>
+                        Performance Prediction
+                    </small>
+
+                </div>
+
+            </article>
+
+
+            <!-- SIMULATED -->
+            <article class="
+                sim-result-card
+                sim-result-highlight
+            ">
+
+                <div class="sim-result-label">
+                    Simulated State
+                </div>
+
+                <div class="sim-result-risk">
+
+                    <span id="simulatedRisk">
+                        --
+                    </span>
+
+                    <small>
+                        Attrition Risk
+                    </small>
+
+                </div>
+
+                <div
+                    id="simulatedRiskBadge"
+                    class="risk-badge"
+                >
+                    --
+                </div>
+
+                <div class="sim-result-performance">
+
+                    <span id="simulatedPerformance">
+                        --
+                    </span>
+
+                    <small>
+                        Performance Prediction
+                    </small>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <!-- CHARTS -->
+        <div class="simulator-chart-grid">
+
+
+            <article class="simulator-chart-card">
+
+                <div class="simulator-chart-header">
+
+                    <div>
+
+                        <span class="section-kicker">
+                            Attrition
+                        </span>
+
+                        <h3>
+                            Before vs After Risk
+                        </h3>
+
+                        <p>
+                            Model-predicted attrition probability.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="simulator-chart-frame">
+                    <canvas id="riskComparisonChart"></canvas>
+                </div>
+
+            </article>
+
+
+            <article class="simulator-chart-card">
+
+                <div class="simulator-chart-header">
+
+                    <div>
+
+                        <span class="section-kicker">
+                            Performance
+                        </span>
+
+                        <h3>
+                            Before vs After Performance
+                        </h3>
+
+                        <p>
+                            Predicted performance rating.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="simulator-chart-frame">
+                    <canvas id="performanceComparisonChart"></canvas>
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <!-- CHANGE SUMMARY -->
+        <div class="simulation-change-card">
+
+            <div class="change-summary-item">
+
+                <span>
+                    Attrition Risk Change
+                </span>
+
+                <strong id="riskChange">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="change-summary-divider"></div>
+
+
+            <div class="change-summary-item">
+
+                <span>
+                    Performance Change
+                </span>
+
+                <strong id="performanceChange">
+                    --
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- RECOMMENDATION -->
+        <article class="simulation-recommendation-card">
+
+            <div class="simulation-recommendation-header">
+
+                <div>
+
+                    <span class="section-kicker">
+                        Decision support
+                    </span>
+
+                    <h3>
+                        Recommended Intervention
+                    </h3>
+
+                    <p>
+                        AI-assisted decision support based on
+                        the simulated scenario.
+                    </p>
+
+                </div>
+
+                <span class="action-center-badge">
+                    Action Center
+                </span>
+
+            </div>
+
+
+            <div id="recommendationContent">
+
+                <div class="simulation-empty-message">
+                    Run a simulation to generate recommendations.
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- HISTORY -->
+        <article class="simulation-history-card">
+
+            <div class="simulation-history-header">
+
+                <div>
+
+                    <span class="section-kicker">
+                        Scenario history
+                    </span>
+
+                    <h3>
+                        Recent Simulations
+                    </h3>
+
+                    <p>
+                        Recent scenarios for the selected employee.
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="clearHistoryBtn"
+                    type="button"
+                    class="btn btn-secondary"
+                >
+                    <i data-lucide="trash-2"></i>
+                    Clear History
+                </button>
+
+            </div>
+
+
+            <div class="history-summary">
+
+                <span id="historyCount">
+                    0 scenarios
+                </span>
+
+                <span>
+                    Stored locally in this browser
+                </span>
+
+            </div>
+
+
+            <div class="history-table-wrapper">
+
+                <table class="history-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>Date / Time</th>
+                            <th>Scenario</th>
+                            <th>Current Risk</th>
+                            <th>Simulated Risk</th>
+                            <th>Risk Change</th>
+                            <th>Performance</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="historyBody"></tbody>
+
+                </table>
+
+            </div>
+
+
+            <div
+                id="emptyHistory"
+                class="empty-history"
+            >
+                No simulations recorded yet.
+            </div>
+
+        </article>
+
+
+        <!-- NOTICE -->
+        <div class="simulation-note">
+
+            <i data-lucide="info"></i>
+
+            <div>
+
+                <strong>
+                    Decision-support notice
+                </strong>
+
+                <p>
+                    Simulation results describe how the trained
+                    predictive model responds to a changed employee
+                    profile. They are not causal predictions and should
+                    not be used as the sole basis for employment decisions.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ERROR -->
+    <div
+        id="simulationError"
+        class="error-message hidden"
+    ></div>
+
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="{{ url_for(
+    'static',
+    filename='js/risk_simulator.js'
+) }}"></script>
+
+{% endblock %}

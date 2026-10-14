@@ -1,0 +1,575 @@
+{% extends "base.html" %}
+
+{% block title %}Overview | HR Insight AI{% endblock %}
+{% block page_name %}Overview{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-page">
+
+    <!-- =========================
+         PAGE HERO
+    ========================== -->
+    <section class="dashboard-hero">
+
+        <div class="hero-copy">
+
+            <div class="eyebrow">
+                <span class="eyebrow-dot"></span>
+                Workforce intelligence workspace
+            </div>
+
+            <h1>
+                See your workforce
+                <span>clearly.</span>
+            </h1>
+
+            <p>
+                Monitor predicted attrition risk, employee performance,
+                department-level signals, and workforce patterns from
+                one decision-support workspace.
+            </p>
+
+        </div>
+
+        <div class="hero-actions">
+
+            <div class="hero-meta" id="dashboardStatus">
+                Loading workforce intelligence...
+            </div>
+
+            <a href="/prediction" class="btn btn-primary hero-button">
+                <i data-lucide="sparkles"></i>
+                New Assessment
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         KPI CARDS
+    ========================== -->
+    <section
+        class="dashboard-kpi-grid"
+        aria-label="Workforce Key Performance Indicators"
+    >
+
+        <!-- TOTAL EMPLOYEES -->
+        <article class="metric-card metric-indigo">
+
+            <div class="metric-top">
+
+                <div>
+                    <span class="metric-label">
+                        Total Employees
+                    </span>
+                    <span class="metric-subtitle">
+                        Workforce coverage
+                    </span>
+                </div>
+
+                <span class="metric-icon">
+                    <i data-lucide="users"></i>
+                </span>
+
+            </div>
+
+            <div
+                class="metric-value"
+                id="totalEmployees"
+            >
+                —
+            </div>
+
+            <div class="metric-foot">
+                Employee records analyzed
+            </div>
+
+        </article>
+
+
+        <!-- AVG RISK -->
+        <article class="metric-card metric-rose">
+
+            <div class="metric-top">
+
+                <div>
+                    <span class="metric-label">
+                        Avg. Predicted Risk
+                    </span>
+                    <span class="metric-subtitle">
+                        Workforce model signal
+                    </span>
+                </div>
+
+                <span class="metric-icon">
+                    <i data-lucide="shield-alert"></i>
+                </span>
+
+            </div>
+
+            <div
+                class="metric-value"
+                id="avgPredictedRisk"
+            >
+                —
+            </div>
+
+            <div
+                class="metric-foot"
+                id="historicalAttrition"
+            >
+                Historical attrition: —
+            </div>
+
+        </article>
+
+
+        <!-- PERFORMANCE -->
+        <article class="metric-card metric-cyan">
+
+            <div class="metric-top">
+
+                <div>
+                    <span class="metric-label">
+                        Avg. Performance
+                    </span>
+                    <span class="metric-subtitle">
+                        Observed ratings
+                    </span>
+                </div>
+
+                <span class="metric-icon">
+                    <i data-lucide="gauge"></i>
+                </span>
+
+            </div>
+
+            <div
+                class="metric-value"
+                id="avgPerformance"
+            >
+                —
+            </div>
+
+            <div class="metric-foot">
+                Rating scale: 2–5
+            </div>
+
+        </article>
+
+
+        <!-- HIGH RISK -->
+        <article class="metric-card metric-amber">
+
+            <div class="metric-top">
+
+                <div>
+                    <span class="metric-label">
+                        High-Risk Employees
+                    </span>
+                    <span class="metric-subtitle">
+                        Requires HR review
+                    </span>
+                </div>
+
+                <span class="metric-icon">
+                    <i data-lucide="triangle-alert"></i>
+                </span>
+
+            </div>
+
+            <div
+                class="metric-value"
+                id="highRiskCount"
+            >
+                —
+            </div>
+
+            <div
+                class="metric-foot"
+                id="highRiskPercentage"
+            >
+                Predicted high-risk employees
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- =========================
+         MAIN ANALYTICS
+    ========================== -->
+    <section class="analytics-grid analytics-grid-primary">
+
+
+        <!-- RISK DISTRIBUTION -->
+        <article class="surface-card chart-card">
+
+            <div class="surface-header">
+
+                <div>
+
+                    <div class="section-kicker">
+                        Risk intelligence
+                    </div>
+
+                    <h2>
+                        Predicted Attrition Risk
+                    </h2>
+
+                    <p>
+                        Current workforce distribution across
+                        the deployed risk bands.
+                    </p>
+
+                </div>
+
+                <span class="live-chip">
+                    <span class="chip-dot"></span>
+                    Model based
+                </span>
+
+            </div>
+
+
+            <div class="risk-visual">
+
+                <div class="risk-donut-wrap">
+
+                    <canvas
+                        id="riskChart"
+                        aria-label="Predicted attrition risk distribution"
+                    ></canvas>
+
+                    <div class="donut-center">
+
+                        <span>
+                            Workforce
+                        </span>
+
+                        <strong id="riskCoverage">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="risk-legend"
+                    id="riskLegend"
+                >
+
+                    <div class="legend-loading">
+                        Loading risk bands...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- PERFORMANCE DISTRIBUTION -->
+        <article class="surface-card chart-card">
+
+            <div class="surface-header">
+
+                <div>
+
+                    <div class="section-kicker">
+                        Performance
+                    </div>
+
+                    <h2>
+                        Rating Distribution
+                    </h2>
+
+                    <p>
+                        Observed employee performance ratings
+                        in the current dataset.
+                    </p>
+
+                </div>
+
+                <span class="mini-chip">
+                    2–5
+                </span>
+
+            </div>
+
+
+            <div class="chart-frame chart-frame-performance">
+
+                <canvas
+                    id="performanceChart"
+                    aria-label="Employee performance rating distribution"
+                ></canvas>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- =========================
+         SECONDARY ANALYTICS
+    ========================== -->
+    <section class="analytics-grid analytics-grid-secondary">
+
+
+        <!-- DEPARTMENT RISK -->
+        <article class="surface-card chart-card department-card">
+
+            <div class="surface-header">
+
+                <div>
+
+                    <div class="section-kicker">
+                        Organizational view
+                    </div>
+
+                    <h2>
+                        Risk by Department
+                    </h2>
+
+                    <p>
+                        Average predicted attrition probability
+                        by department.
+                    </p>
+
+                </div>
+
+                <span class="mini-chip">
+                    Average risk
+                </span>
+
+            </div>
+
+
+            <div class="chart-frame chart-frame-department">
+
+                <canvas
+                    id="departmentRiskChart"
+                    aria-label="Average predicted attrition risk by department"
+                ></canvas>
+
+            </div>
+
+        </article>
+
+
+        <!-- WORKFORCE SIGNALS -->
+        <article class="surface-card signals-card">
+
+            <div class="surface-header">
+
+                <div>
+
+                    <div class="section-kicker">
+                        Workforce signals
+                    </div>
+
+                    <h2>
+                        What needs attention
+                    </h2>
+
+                    <p>
+                        Dataset-level indicators to guide
+                        focused HR review.
+                    </p>
+
+                </div>
+
+                <span class="mini-chip">
+                    Live
+                </span>
+
+            </div>
+
+
+            <div
+                class="signal-list"
+                id="workforceSignals"
+            >
+
+                <div class="signal-loading">
+                    Loading workforce signals...
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- =========================
+         QUICK ACTIONS
+    ========================== -->
+    <section class="surface-card quick-actions-card">
+
+        <div class="surface-header">
+
+            <div>
+
+                <div class="section-kicker">
+                    Decision support
+                </div>
+
+                <h2>
+                    Continue with an action
+                </h2>
+
+                <p>
+                    Move from workforce-level signals to
+                    employee-level assessment and HR knowledge.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="action-grid">
+
+
+            <!-- EMPLOYEE ROSTER -->
+            <a
+                href="/employees"
+                class="action-card"
+            >
+
+                <span class="action-icon">
+                    <i data-lucide="users-round"></i>
+                </span>
+
+                <span class="action-content">
+
+                    <strong>
+                        Review employees
+                    </strong>
+
+                    <small>
+                        Open the roster and assess
+                        individual employees.
+                    </small>
+
+                </span>
+
+                <i
+                    data-lucide="arrow-up-right"
+                    class="action-arrow"
+                ></i>
+
+            </a>
+
+
+            <!-- SIMULATOR -->
+            <a
+                href="/simulator"
+                class="action-card"
+            >
+
+                <span class="action-icon">
+                    <i data-lucide="sliders-horizontal"></i>
+                </span>
+
+                <span class="action-content">
+
+                    <strong>
+                        Run a scenario
+                    </strong>
+
+                    <small>
+                        Explore how workplace factors
+                        change model predictions.
+                    </small>
+
+                </span>
+
+                <i
+                    data-lucide="arrow-up-right"
+                    class="action-arrow"
+                ></i>
+
+            </a>
+
+
+            <!-- KNOWLEDGE SEARCH -->
+            <a
+                href="/knowledge-search"
+                class="action-card"
+            >
+
+                <span class="action-icon">
+                    <i data-lucide="book-open-search"></i>
+                </span>
+
+                <span class="action-content">
+
+                    <strong>
+                        Search HR knowledge
+                    </strong>
+
+                    <small>
+                        Retrieve relevant policies using
+                        IR ranking methods.
+                    </small>
+
+                </span>
+
+                <i
+                    data-lucide="arrow-up-right"
+                    class="action-arrow"
+                ></i>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         DECISION SUPPORT NOTICE
+    ========================== -->
+    <div class="dashboard-notice">
+
+        <i data-lucide="info"></i>
+
+        <span>
+            Predicted risk is intended for decision support
+            and should not be used as an automatic employment decision.
+        </span>
+
+    </div>
+
+
+    <!-- =========================
+         ERROR MESSAGE
+    ========================== -->
+    <div
+        id="dashboardError"
+        class="error-message hidden"
+    ></div>
+
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script
+    src="{{ url_for('static', filename='js/dashboard.js') }}"
+></script>
+
+{% endblock %}
