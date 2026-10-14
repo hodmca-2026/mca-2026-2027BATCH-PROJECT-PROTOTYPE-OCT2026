@@ -1,0 +1,173 @@
+/* ============================================================
+   IAPIS — Custom Styles (supplements Tailwind via CDN)
+   ============================================================ */
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 100px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Selection */
+::selection {
+    background: rgba(59, 130, 246, 0.3);
+    color: white;
+}
+
+/* Range slider custom track */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6, #22d3ee);
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 14px rgba(59, 130, 246, 0.6);
+}
+input[type="range"]::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6, #22d3ee);
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Report card hover lift */
+.report-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.report-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    border-color: rgba(59, 130, 246, 0.15);
+}
+
+/* Severity badge animations */
+.severity-badge {
+    transition: all 0.2s ease;
+}
+.severity-badge:hover {
+    transform: scale(1.05);
+}
+
+/* Score bar fill animation */
+.score-bar-fill {
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Markdown content styling within recommendation */
+.prose-xs p {
+    margin-bottom: 0.5rem;
+}
+.prose-xs h2, .prose-xs h3 {
+    color: #e2e8f0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+}
+.prose-xs ul, .prose-xs ol {
+    padding-left: 1.2rem;
+    margin: 0.3rem 0;
+}
+.prose-xs li {
+    margin-bottom: 0.2rem;
+}
+.prose-xs strong {
+    color: #f1f5f9;
+}
+.prose-xs code {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.1rem 0.3rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+}
+
+/* PPE detection badge */
+.ppe-detection-item {
+    transition: background-color 0.2s ease;
+}
+.ppe-detection-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Skeleton loading shimmer */
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+.skeleton {
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0.03) 25%,
+        rgba(255, 255, 255, 0.08) 50%,
+        rgba(255, 255, 255, 0.03) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 8px;
+}
+
+/* Smooth entry for staggered results */
+.report-card-enter {
+    animation: slideUp 0.4s ease-out both;
+}
+.report-card-enter:nth-child(2) { animation-delay: 0.05s; }
+.report-card-enter:nth-child(3) { animation-delay: 0.1s; }
+.report-card-enter:nth-child(4) { animation-delay: 0.15s; }
+.report-card-enter:nth-child(5) { animation-delay: 0.2s; }
+
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tooltip */
+.tooltip {
+    position: relative;
+}
+.tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-4px);
+    background: #1e1b2e;
+    color: #94a3b8;
+    font-size: 0.65rem;
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.tooltip:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-8px);
+}

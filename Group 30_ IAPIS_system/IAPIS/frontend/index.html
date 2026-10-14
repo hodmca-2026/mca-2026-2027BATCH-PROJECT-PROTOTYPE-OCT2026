@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAPIS — Industrial Accident Prevention Intelligence System</title>
+    <meta name="description" content="AI-powered safety intelligence system for industrial accident prevention using hybrid retrieval, deep learning risk detection, and LLM recommendations.">
+    
+    <!-- Tailwind CSS v3 CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a' },
+                        danger: { 50: '#fef2f2', 100: '#fee2e2', 400: '#f87171', 500: '#ef4444', 600: '#dc2626' },
+                        warning: { 50: '#fffbeb', 100: '#fef3c7', 400: '#fbbf24', 500: '#f59e0b' },
+                        success: { 50: '#f0fdf4', 100: '#dcfce7', 400: '#4ade80', 500: '#22c55e' },
+                        surface: { 800: '#1e1b2e', 850: '#181527', 900: '#110e1f', 950: '#0a0815' },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'fade-in': 'fadeIn 0.4s ease-out',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        slideUp: { '0%': { transform: 'translateY(20px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        glow: { '0%': { boxShadow: '0 0 5px rgba(59, 130, 246, 0.2)' }, '100%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.4)' } },
+                    },
+                },
+            },
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Marked.js for rendering markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body class="bg-surface-950 text-gray-100 font-sans min-h-screen antialiased">
+
+    <!-- Background Gradient Orbs -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-primary-600/10 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/3 -left-40 w-80 h-80 bg-purple-600/8 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-1/4 w-72 h-72 bg-cyan-600/6 rounded-full blur-3xl"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-xl bg-surface-950/70 border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-primary-500/20">
+                            <i data-lucide="shield-check" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <div class="absolute -top-0.5 -right-0.5 w-3 h-3 bg-success-400 rounded-full border-2 border-surface-950 animate-pulse-slow"></div>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold tracking-tight bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">IAPIS</h1>
+                        <p class="text-[10px] text-gray-500 uppercase tracking-widest font-medium">Accident Prevention AI</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div id="status-indicator" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs">
+                        <span class="w-2 h-2 rounded-full bg-success-400 animate-pulse-slow"></span>
+                        <span class="text-gray-400">System Online</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- Hero Search Section -->
+        <section class="mb-10 animate-fade-in">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
+                    <span class="bg-gradient-to-r from-primary-400 via-cyan-300 to-purple-400 bg-clip-text text-transparent">
+                        Safety Intelligence Search
+                    </span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base">
+                    Ask any safety question. Our AI retrieves similar incidents, detects risk patterns, and generates actionable recommendations.
+                </p>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="max-w-3xl mx-auto">
+                <div class="relative group">
+                    <div class="absolute -inset-0.5 bg-gradient-to-r from-primary-500/30 via-cyan-500/30 to-purple-500/30 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative flex items-center bg-surface-800 rounded-2xl border border-white/10 shadow-2xl shadow-black/20 overflow-hidden">
+                        <i data-lucide="search" class="w-5 h-5 text-gray-500 ml-5 shrink-0"></i>
+                        <input
+                            id="search-input"
+                            type="text"
+                            placeholder="e.g., Have there been incidents involving overheating motors?"
+                            class="flex-1 bg-transparent px-4 py-4 text-sm sm:text-base text-white placeholder-gray-500 focus:outline-none"
+                            autocomplete="off"
+                        >
+                        <button
+                            id="search-btn"
+                            class="m-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-primary-600 to-cyan-500 text-white text-sm font-semibold hover:from-primary-500 hover:to-cyan-400 transition-all duration-300 shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 flex items-center gap-2 shrink-0 disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            <i data-lucide="sparkles" class="w-4 h-4"></i>
+                            Analyze
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls Row -->
+            <div class="max-w-3xl mx-auto mt-4 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+                <div class="flex items-center gap-2">
+                    <label class="text-xs text-gray-500 font-medium">Results</label>
+                    <select id="top-k-select" class="bg-surface-800 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-gray-300 focus:outline-none focus:ring-1 focus:ring-primary-500/50">
+                        <option value="3">3</option>
+                        <option value="5" selected>5</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+                <div class="flex items-center gap-3 min-w-[200px]">
+                    <label class="text-xs text-gray-500 font-medium whitespace-nowrap">BM25</label>
+                    <input id="alpha-slider" type="range" min="0" max="100" value="50" class="w-full h-1.5 bg-white/10 rounded-full appearance-none cursor-pointer accent-primary-500">
+                    <label class="text-xs text-gray-500 font-medium whitespace-nowrap">Dense</label>
+                </div>
+                <span id="alpha-value" class="text-[10px] font-mono text-gray-600 bg-white/5 px-2 py-1 rounded">α = 0.50</span>
+            </div>
+
+            <!-- Quick Queries -->
+            <div class="max-w-3xl mx-auto mt-4 flex flex-wrap items-center justify-center gap-2">
+                <span class="text-xs text-gray-600 mr-1">Try:</span>
+                <button onclick="setQuery('overheating motor incidents')" class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-gray-400 hover:text-white hover:border-primary-500/30 hover:bg-primary-500/5 transition-all">overheating motor</button>
+                <button onclick="setQuery('forklift accidents in warehouse')" class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-gray-400 hover:text-white hover:border-primary-500/30 hover:bg-primary-500/5 transition-all">forklift accidents</button>
+                <button onclick="setQuery('electrical shock incidents')" class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-gray-400 hover:text-white hover:border-primary-500/30 hover:bg-primary-500/5 transition-all">electrical shock</button>
+                <button onclick="setQuery('conveyor belt fire')" class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-gray-400 hover:text-white hover:border-primary-500/30 hover:bg-primary-500/5 transition-all">conveyor fire</button>
+            </div>
+        </section>
+
+        <!-- Loading State -->
+        <div id="loading-state" class="hidden mb-10">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex flex-col items-center justify-center py-16 gap-4">
+                    <div class="relative">
+                        <div class="w-16 h-16 rounded-full border-2 border-primary-500/20 border-t-primary-500 animate-spin"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="brain" class="w-6 h-6 text-primary-400 animate-pulse"></i>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-gray-300 font-medium text-sm">Analyzing your query...</p>
+                        <p class="text-gray-600 text-xs mt-1">Running hybrid retrieval, reranking, and risk detection</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Container -->
+        <div id="results-container" class="hidden">
+
+            <!-- Results Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+                <!-- Left: Report Results -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-sm font-semibold text-gray-300 flex items-center gap-2">
+                            <i data-lucide="file-text" class="w-4 h-4 text-primary-400"></i>
+                            Retrieved Reports
+                        </h3>
+                        <span id="result-count" class="text-xs text-gray-600"></span>
+                    </div>
+                    <div id="reports-list" class="space-y-3">
+                        <!-- Report cards injected here -->
+                    </div>
+                </div>
+
+                <!-- Right: Risk + Recommendation Sidebar -->
+                <div class="space-y-5">
+
+                    <!-- Risk Flags Panel -->
+                    <div class="rounded-2xl bg-surface-800/60 border border-white/5 p-5 backdrop-blur-sm">
+                        <h3 class="text-sm font-semibold text-gray-300 flex items-center gap-2 mb-4">
+                            <i data-lucide="alert-triangle" class="w-4 h-4 text-warning-400"></i>
+                            Risk Flags
+                        </h3>
+                        <div id="risk-flags-content" class="space-y-3">
+                            <!-- Risk flags injected here -->
+                        </div>
+                    </div>
+
+                    <!-- Recurrence Pattern -->
+                    <div class="rounded-2xl bg-surface-800/60 border border-white/5 p-5 backdrop-blur-sm">
+                        <h3 class="text-sm font-semibold text-gray-300 flex items-center gap-2 mb-3">
+                            <i data-lucide="repeat" class="w-4 h-4 text-purple-400"></i>
+                            Recurrence Pattern
+                        </h3>
+                        <p id="recurrence-text" class="text-xs text-gray-400 leading-relaxed"></p>
+                    </div>
+
+                    <!-- Recommendation Panel -->
+                    <div class="rounded-2xl bg-gradient-to-br from-surface-800/80 to-primary-900/10 border border-primary-500/10 p-5 backdrop-blur-sm">
+                        <h3 class="text-sm font-semibold text-gray-300 flex items-center gap-2 mb-3">
+                            <i data-lucide="lightbulb" class="w-4 h-4 text-warning-400"></i>
+                            AI Recommendation
+                            <span id="llm-badge" class="ml-auto text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/5 text-gray-500 border border-white/10"></span>
+                        </h3>
+                        <div id="recommendation-content" class="text-xs text-gray-300 leading-relaxed prose prose-invert prose-xs max-w-none">
+                            <!-- Recommendation injected here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PPE Detection Section -->
+        <section class="mt-16 mb-10 border-t border-white/5 pt-10">
+            <div class="max-w-2xl mx-auto text-center">
+                <h3 class="text-xl font-bold mb-2 flex items-center justify-center gap-2">
+                    <i data-lucide="camera" class="w-5 h-5 text-cyan-400"></i>
+                    <span class="bg-gradient-to-r from-cyan-300 to-purple-400 bg-clip-text text-transparent">PPE Detection</span>
+                </h3>
+                <p class="text-xs text-gray-500 mb-6">Upload a worksite photo to detect PPE compliance and hazards using AI vision.</p>
+
+                <div id="ppe-upload-zone" class="relative group cursor-pointer">
+                    <div class="absolute -inset-0.5 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative border-2 border-dashed border-white/10 rounded-2xl p-10 hover:border-cyan-500/30 transition-colors bg-surface-800/30">
+                        <input type="file" id="ppe-file-input" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                        <div class="flex flex-col items-center gap-3">
+                            <div class="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center">
+                                <i data-lucide="upload" class="w-6 h-6 text-gray-500"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">Drop an image here or <span class="text-cyan-400 font-medium">browse</span></p>
+                                <p class="text-[10px] text-gray-600 mt-1">Supports JPG, PNG, WebP</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PPE Results -->
+                <div id="ppe-results" class="hidden mt-6 text-left">
+                    <div class="rounded-2xl bg-surface-800/60 border border-white/5 p-5">
+                        <h4 class="text-sm font-semibold text-gray-300 mb-3 flex items-center gap-2">
+                            <i data-lucide="scan" class="w-4 h-4 text-cyan-400"></i>
+                            Detection Results
+                        </h4>
+                        <div id="ppe-detections-list" class="space-y-2"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-6 mt-10">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-xs text-gray-600">
+                IAPIS — Industrial Accident Prevention Intelligence System · Academic Project ·
+                SDG 8 & 9 · Built with FastAPI, PyTorch, ChromaDB & Sentence-Transformers
+            </p>
+        </div>
+    </footer>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
