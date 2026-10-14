@@ -1,8 +1,10 @@
-opencv-python
-mediapipe
-scikit-learn
+fastapi
+uvicorn
+pydantic
 pandas
 numpy
-matplotlib
-seaborn
+scikit-learn
 joblib
+httpx
+matplotlib
+tldextract

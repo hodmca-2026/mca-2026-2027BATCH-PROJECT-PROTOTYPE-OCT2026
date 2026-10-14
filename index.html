@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>PhishGuard | Phishing URL Detection</title>
+
+    <meta
+        name="description"
+        content="PhishGuard AI-powered phishing URL detection and security analysis dashboard."
+    >
+
+    <link rel="stylesheet" href="style.css?v=ir-theme-2">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-inner">
+
+            <!-- BRAND -->
+            <div class="brand">
+
+                <div class="brand-logo">
+                    <img
+                        src="assets/phishguard-logo.png"
+                        alt="PhishGuard Logo"
+                    >
+                </div>
+
+                <div class="brand-text">
+                    <h1>PhishGuard</h1>
+                    <span>URL SECURITY</span>
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+            <nav class="navigation" aria-label="Main navigation">
+
+                <a
+                    href="#dashboard"
+                    class="nav-item active"
+                    data-section="dashboard"
+                >
+                    <span class="nav-icon">⌂</span>
+                    <span class="nav-label">Dashboard</span>
+                </a>
+
+
+                <a
+                    href="#scanner"
+                    class="nav-item"
+                    data-section="scanner"
+                >
+                    <span class="nav-icon">⌕</span>
+                    <span class="nav-label">URL Scanner</span>
+                </a>
+
+
+                <a
+                    href="#history"
+                    class="nav-item"
+                    data-section="history"
+                >
+                    <span class="nav-icon">◷</span>
+                    <span class="nav-label">Scan History</span>
+                </a>
+
+
+                <a
+                    href="#features"
+                    class="nav-item"
+                    data-section="features"
+                >
+                    <span class="nav-icon">◈</span>
+                    <span class="nav-label">URL Features</span>
+                </a>
+
+
+                <a
+                    href="#ir-analysis"
+                    class="nav-item"
+                    data-section="ir-analysis"
+                >
+                    <span class="nav-icon">IR</span>
+                    <span class="nav-label">IR Analysis</span>
+                </a>
+
+
+                <a
+                    href="#report"
+                    class="nav-item"
+                    data-section="report"
+                >
+                    <span class="nav-icon">▤</span>
+                    <span class="nav-label">Security Report</span>
+                </a>
+
+            </nav>
+
+
+            <!-- SIDEBAR STATUS -->
+            <div class="sidebar-bottom">
+
+                <div class="protection-card">
+
+                    <div class="protection-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <strong>Protection Active</strong>
+                        <span>System ready for analysis</span>
+                    </div>
+
+                </div>
+
+
+                <div class="sidebar-footer">
+
+                    <span>PhishGuard v1.0</span>
+
+                    <span class="secure-status">
+                        ● Secure
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOP BAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div class="mobile-brand">
+                <strong>PhishGuard</strong>
+            </div>
+
+
+            <div class="breadcrumb">
+
+                <span>Security</span>
+
+                <span>/</span>
+
+                <strong id="breadcrumbCurrent">
+                    Dashboard
+                </strong>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <div class="system-status">
+
+                    <span class="status-dot"></span>
+
+                    <span>System Ready</span>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="notification-btn"
+                    title="Notifications"
+                >
+                    🔔
+                </button>
+
+
+                <div class="profile">
+
+                    <div class="profile-avatar">
+                        C
+                    </div>
+
+                    <div class="profile-info">
+
+                        <strong>User</strong>
+
+                        <span>Security Analyst</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             PAGE CONTENT
+        ================================================== -->
+
+        <div class="page-content">
+
+
+            <!-- =================================================
+                 DASHBOARD
+            ================================================== -->
+
+            <section
+                id="dashboard"
+                class="page-section dashboard-section"
+
+            <!-- =================================================
+                 INFORMATION RETRIEVAL ANALYSIS
+            ================================================== -->
+
+            <section
+                id="ir-analysis"
+                class="page-section"
+                aria-labelledby="irHeading"
+            >
+
+                <div class="section-title">
+
+                    <span class="section-label">INFORMATION RETRIEVAL</span>
+
+                    <h2 id="irHeading">IR Analysis</h2>
+
+                    <p>Supporting URL-term modeling, project graph ranking, and URL-text retrieval from scan history.</p>
+
+                </div>
+
+                <div class="ir-analysis-grid">
+
+                    <article class="ir-analysis-card">
+                        <span class="section-label">UNIT IV · LANGUAGE MODEL</span>
+                        <h3>URL Term Likelihood</h3>
+                        <p class="ir-card-caption">Multinomial language-model phishing likelihood</p>
+                        <strong id="irLanguageScore" class="ir-metric">--</strong>
+                        <span id="irLanguageStatus" class="ir-substatus">Awaiting scan</span>
+                        <div class="ir-terms-block">
+                            <span>Terms more likely in phishing history</span>
+                            <p id="irSuspiciousTerms">--</p>
+                        </div>
+                    </article>
+
+                    <article class="ir-analysis-card">
+                        <span class="section-label">UNIT V · GRAPH RANKING</span>
+                        <h3>Project URL Graph</h3>
+                        <p class="ir-card-caption">Project-level URL/domain graph ranking</p>
+                        <div class="ir-rank-values">
+                            <div>
+                                <span>PageRank score</span>
+                                <strong id="irPageRankScore" class="ir-metric">--</strong>
+                            </div>
+                            <div>
+                                <span>Graph rank</span>
+                                <strong id="irPageRankRank" class="ir-metric">--</strong>
+                            </div>
+                            <div>
+                                <span>Unique URLs / nodes</span>
+                                <strong id="irGraphNodes" class="ir-metric">--</strong>
+                            </div>
+                            <div>
+                                <span>Relationships / edges</span>
+                                <strong id="irGraphEdges" class="ir-metric">--</strong>
+                            </div>
+                        </div>
+                        <span id="irPageRankStatus" class="ir-substatus">Awaiting scan</span>
+                        <p id="irGraphDetails" class="ir-card-caption">Calculated from URL/domain relationships in local scan history; not Google's live PageRank.</p>
+                    </article>
+
+                    <article class="ir-analysis-card ir-recommendations-card">
+                        <span class="section-label">UNIT VI · CONTENT-BASED RETRIEVAL</span>
+                        <h3>Similar URLs</h3>
+                        <p class="ir-card-caption">TF-IDF cosine similarity between historical URL strings</p>
+                        <ol id="irRecommendations" class="ir-recommendation-list">
+                            <li>No similar URLs found.</li>
+                        </ol>
+                        <p class="ir-card-caption">DAAT retrieval from matching historical URL terms</p>
+                        <ol id="irDAATResults" class="ir-recommendation-list">
+                            <li>No matching historical URLs found.</li>
+                        </ol>
+                        <span id="irDAATStatus" class="ir-substatus">Awaiting scan</span>
+                        <p class="ir-card-caption ir-similarity-note">URL-text similarity does not imply similar webpage content or maliciousness.</p>
+                        <span id="irRecommendationStatus" class="ir-substatus">Awaiting scan</span>
+                    </article>
+
+                </div>
+
+                <p id="irOverallStatus" class="ir-overall-status" aria-live="polite">IR analysis appears after a URL is scanned.</p>
+
+            </section>
+
+
+            >
+
+                <div class="page-header">
+
+                    <div>
+
+                        <span class="section-label">
+                            THREAT DETECTION DASHBOARD
+                        </span>
+
+                        <h2>
+                            Phishing URL Detection
+                        </h2>
+
+                        <p>
+                            Analyze suspicious website URLs and
+                            identify potential phishing threats
+                            using machine learning.
+                        </p>
+
+                    </div>
+
+                    <div class="dashboard-status">
+
+                        <span class="status-dot"></span>
+
+                        <span>Protection Active</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STATISTICS -->
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon blue">
+                            ⌁
+                        </div>
+
+                        <div class="stat-content">
+
+                            <span>Total Scans</span>
+
+                            <strong id="totalScans">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon red">
+                            ⚠
+                        </div>
+
+                        <div class="stat-content">
+
+                            <span>Threats Detected</span>
+
+                            <strong id="threatsDetected">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon green">
+                            ✓
+                        </div>
+
+                        <div class="stat-content">
+
+                            <span>Safe URLs</span>
+
+                            <strong id="safeUrls">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon purple">
+                            AI
+                        </div>
+
+                        <div class="stat-content">
+
+                            <span>Model Status</span>
+
+                            <strong id="modelStatus">
+                                Awaiting scan
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HOW IT WORKS -->
+
+                <div class="content-card workflow-card">
+
+                    <div class="card-heading">
+
+                        <div>
+                            <span class="section-label">
+                                ANALYSIS PIPELINE
+                            </span>
+
+                            <h3>
+                                How PhishGuard Works
+                            </h3>
+                        </div>
+
+                    </div>
+
+
+                    <div class="workflow-grid">
+
+                        <div class="workflow-step">
+
+                            <div class="step-number">01</div>
+
+                            <div class="step-icon">🔗</div>
+
+                            <h4>
+                                Enter URL
+                            </h4>
+
+                            <p>
+                                Provide a website URL for analysis.
+                            </p>
+
+                        </div>
+
+
+                        <div class="workflow-step">
+
+                            <div class="step-number">02</div>
+
+                            <div class="step-icon">✓</div>
+
+                            <h4>
+                                Validate
+                            </h4>
+
+                            <p>
+                                Check whether the URL is valid.
+                            </p>
+
+                        </div>
+
+
+                        <div class="workflow-step">
+
+                            <div class="step-number">03</div>
+
+                            <div class="step-icon">◈</div>
+
+                            <h4>
+                                Extract Features
+                            </h4>
+
+                            <p>
+                                Analyze important URL security features.
+                            </p>
+
+                        </div>
+
+
+                        <div class="workflow-step">
+
+                            <div class="step-number">04</div>
+
+                            <div class="step-icon">AI</div>
+
+                            <h4>
+                                ML Analysis
+                            </h4>
+
+                            <p>
+                                Random Forest evaluates the URL.
+                            </p>
+
+                        </div>
+
+
+                        <div class="workflow-step">
+
+                            <div class="step-number">05</div>
+
+                            <div class="step-icon">⚠</div>
+
+                            <h4>
+                                Risk Assessment
+                            </h4>
+
+                            <p>
+                                Calculate the security risk.
+                            </p>
+
+                        </div>
+
+
+                        <div class="workflow-step">
+
+                            <div class="step-number">06</div>
+
+                            <div class="step-icon">▤</div>
+
+                            <h4>
+                                Security Report
+                            </h4>
+
+                            <p>
+                                Display the result and explanation.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 URL SCANNER
+            ================================================== -->
+
+            <section
+                id="scanner"
+                class="page-section"
+            >
+
+                <div class="section-title">
+
+                    <span class="section-label">
+                        URL SECURITY SCANNER
+                    </span>
+
+                    <h2>
+                        Scan a Website
+                    </h2>
+
+                    <p>
+                        Enter a URL and let PhishGuard analyze
+                        its security risk.
+                    </p>
+
+                </div>
+
+
+                <div class="content-card scanner-card">
+
+                    <div class="scanner-heading">
+
+                        <div class="scanner-icon">
+                            🔍
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Analyze Website URL
+                            </h3>
+
+                            <p>
+                                Our security engine will inspect
+                                the URL and generate a risk assessment.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="url-input-area">
+
+                        <label for="urlInput">
+                            Website URL
+                        </label>
+
+                        <div class="url-input-wrapper">
+
+                            <span class="url-input-icon">
+                                🔗
+                            </span>
+
+                            <input
+                                type="text"
+                                id="urlInput"
+                                name="url"
+                                placeholder="https://example.com"
+                                autocomplete="off"
+                                spellcheck="false"
+                            >
+
+                            <button
+                                type="button"
+                                id="clearInput"
+                                class="clear-input"
+                                title="Clear URL"
+                            >
+                                ×
+                            </button>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            id="analyzeBtn"
+                            class="analyze-btn"
+                        >
+
+                            <span class="analyze-btn-text">
+                                Analyze URL
+                            </span>
+
+                            <span class="analyze-btn-icon">
+                                →
+                            </span>
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- MESSAGE -->
+
+                    <div
+                        id="scannerMessage"
+                        class="scanner-message"
+                        aria-live="polite"
+                    ></div>
+
+
+                    <!-- LOADING -->
+
+                    <div
+                        id="scanLoading"
+                        class="scan-loading"
+                        hidden
+                    >
+
+                        <div class="loading-spinner"></div>
+
+                        <div>
+
+                            <strong>
+                                Analyzing URL...
+                            </strong>
+
+                            <span>
+                                Running security checks and machine learning analysis.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SCAN RESULT -->
+
+                <div
+                    id="scanResult"
+                    class="content-card result-card"
+                >
+
+                    <div class="result-header">
+
+                        <div>
+
+                            <span class="section-label">
+                                SECURITY ASSESSMENT
+                            </span>
+
+                            <h3>
+                                Scan Result
+                            </h3>
+
+                        </div>
+
+                        <span
+                            id="resultStatus"
+                            class="result-status awaiting"
+                        >
+                            AWAITING SCAN
+                        </span>
+
+                    </div>
+
+
+                    <div class="assessment-grid">
+
+
+                        <!-- RISK SCORE -->
+
+                        <div class="risk-card">
+
+                            <span class="card-label">
+                                RISK SCORE
+                            </span>
+
+                            <div class="risk-gauge">
+
+                                <div
+                                    id="riskGauge"
+                                    class="risk-gauge-circle"
+                                >
+
+                                    <div class="gauge-content">
+
+                                        <strong id="riskScore">
+                                            --
+                                        </strong>
+
+                                        <span>
+                                            / 100
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <span
+                                id="riskLevel"
+                                class="risk-level"
+                            >
+                                Awaiting analysis
+                            </span>
+
+                        </div>
+
+
+                        <!-- VERDICT -->
+
+                        <div class="verdict-card">
+
+                            <div class="card-top">
+
+                                <span class="card-label">
+                                    VERDICT
+                                </span>
+
+                                <span
+                                    id="verdictIndicator"
+                                    class="live-indicator"
+                                >
+                                    ●
+                                </span>
+
+                            </div>
+
+
+                            <div class="verdict-content">
+
+                                <div
+                                    id="verdictIcon"
+                                    class="verdict-icon"
+                                >
+                                    ?
+                                </div>
+
+                                <div>
+
+                                    <strong id="verdictText">
+                                        Awaiting Scan
+                                    </strong>
+
+                                    <span id="verdictDescription">
+                                        Enter a URL to begin security analysis.
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="confidence-section">
+
+                                <div class="confidence-header">
+
+                                    <span>
+                                        Confidence
+                                    </span>
+
+                                    <strong id="confidenceValue">
+                                        --
+                                    </strong>
+
+                                </div>
+
+                                <div class="progress-bar">
+
+                                    <div
+                                        id="confidenceFill"
+                                        class="progress-fill"
+                                        style="width: 0%"
+                                    ></div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        id="scanAgainBtn"
+                        class="secondary-btn"
+                    >
+                        Scan Another URL
+                    </button>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 URL FEATURES
+            ================================================== -->
+
+            <section
+                id="features"
+                class="page-section"
+            >
+
+                <div class="section-title">
+
+                    <span class="section-label">
+                        URL ANALYSIS
+                    </span>
+
+                    <h2>
+                        URL Feature Analysis
+                    </h2>
+
+                    <p>
+                        Security indicators extracted from the scanned URL.
+                    </p>
+
+                </div>
+
+
+                <div class="features-grid">
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            🔒
+                        </div>
+
+                        <div class="feature-content">
+
+                            <span>
+                                HTTPS
+                            </span>
+
+                            <strong id="featureHttpsStatus">
+                                --
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            #
+                        </div>
+
+                        <div class="feature-content">
+
+                            <span>
+                                URL Length
+                            </span>
+
+                            <strong id="featureLengthStatus">
+                                --
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            IP
+                        </div>
+
+                        <div class="feature-content">
+
+                            <span>
+                                IP Address
+                            </span>
+
+                            <strong id="featureIPStatus">
+                                --
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            @
+                        </div>
+
+                        <div class="feature-content">
+
+                            <span>
+                                @ Symbol
+                            </span>
+
+                            <strong id="featureAtStatus">
+                                --
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            ◉
+                        </div>
+
+                        <div class="feature-content">
+
+                            <span>
+                                Subdomains
+                            </span>
+
+                            <strong id="featureSubdomainStatus">
+                                --
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            #
+                        </div>
+
+                        <div class="feature-content">
+
+                            <span>
+                                Special Characters
+                            </span>
+
+                            <strong id="featureSpecialStatus">
+                                --
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            ↗
+                        </div>
+
+                        <div class="feature-content">
+
+                            <span>
+                                URL Shortener
+                            </span>
+
+                            <strong id="featureShortenerStatus">
+                                --
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            ⚠
+                        </div>
+
+                        <div class="feature-content">
+
+                            <span>
+                                Suspicious Keywords
+                            </span>
+
+                            <strong id="featureKeywordsStatus">
+                                --
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SECURITY CHECKS -->
+
+                <div class="content-card security-checks-card">
+
+                    <div class="card-heading">
+
+                        <div>
+
+                            <span class="section-label">
+                                SECURITY CHECKS
+                            </span>
+
+                            <h3>
+                                Website Security Verification
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="security-checks-grid">
+
+
+                        <div class="security-check-card">
+
+                            <div
+                                id="dnsCheckIcon"
+                                class="security-check-icon"
+                            >
+                                ?
+                            </div>
+
+                            <div class="security-check-content">
+
+                                <strong>
+                                    DNS Resolution
+                                </strong>
+
+                                <span id="dnsCheckStatus">
+                                    Not checked
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="security-check-card">
+
+                            <div
+                                id="sslCheckIcon"
+                                class="security-check-icon"
+                            >
+                                ?
+                            </div>
+
+                            <div class="security-check-content">
+
+                                <strong>
+                                    SSL Certificate
+                                </strong>
+
+                                <span id="sslCheckStatus">
+                                    Not checked
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="security-check-card">
+
+                            <div
+                                id="urlCheckIcon"
+                                class="security-check-icon"
+                            >
+                                ?
+                            </div>
+
+                            <div class="security-check-content">
+
+                                <strong>
+                                    URL Security
+                                </strong>
+
+                                <span id="urlCheckStatus">
+                                    Not checked
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="security-check-card">
+
+                            <div
+                                id="mlCheckIcon"
+                                class="security-check-icon"
+                            >
+                                ?
+                            </div>
+
+                            <div class="security-check-content">
+
+                                <strong>
+                                    ML Detection
+                                </strong>
+
+                                <span id="mlCheckStatus">
+                                    Not checked
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 HISTORY
+            ================================================== -->
+
+            <section
+                id="history"
+                class="page-section"
+            >
+
+                <div class="section-title history-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            SCAN HISTORY
+                        </span>
+
+                        <h2>
+                            Recent URL Scans
+                        </h2>
+
+                        <p>
+                            Review URLs previously analyzed by PhishGuard.
+                        </p>
+
+                    </div>
+
+
+                    <div class="history-actions">
+
+                        <button
+                            type="button"
+                            id="historyAllBtn"
+                            class="filter-btn active"
+                            data-filter="all"
+                        >
+                            All
+                        </button>
+
+                        <button
+                            type="button"
+                            id="historyThreatBtn"
+                            class="filter-btn"
+                            data-filter="threat"
+                        >
+                            Threats
+                        </button>
+
+                        <button
+                            type="button"
+                            id="historySafeBtn"
+                            class="filter-btn"
+                            data-filter="safe"
+                        >
+                            Safe
+                        </button>
+
+                        <button
+                            type="button"
+                            id="clearHistoryBtn"
+                            class="clear-history-btn"
+                        >
+                            Clear History
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="content-card history-card">
+
+                    <div class="history-table-container">
+
+                        <table class="history-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Date & Time
+                                    </th>
+
+                                    <th>
+                                        URL
+                                    </th>
+
+                                    <th>
+                                        Risk Score
+                                    </th>
+
+                                    <th>
+                                        Verdict
+                                    </th>
+
+                                    <th>
+                                        Status
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="historyTableBody">
+
+                                <!-- JavaScript inserts history rows here -->
+
+                            </tbody>
+
+                        </table>
+
+
+                        <div
+                            id="emptyHistory"
+                            class="empty-history"
+                        >
+
+                            <div class="empty-history-icon">
+                                ◷
+                            </div>
+
+                            <h3>
+                                No Scan History
+                            </h3>
+
+                            <p>
+                                Your analyzed URLs will appear here.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 SECURITY REPORT
+            ================================================== -->
+
+            <section
+                id="report"
+                class="page-section"
+            >
+
+                <div class="section-title">
+
+                    <span class="section-label">
+                        SECURITY REPORT
+                    </span>
+
+                    <h2>
+                        Detailed Analysis Report
+                    </h2>
+
+                    <p>
+                        Review the latest scan result and security explanation.
+                    </p>
+
+                </div>
+
+
+                <div class="content-card report-card">
+
+
+                    <div class="report-header">
+
+                        <div class="report-brand">
+
+                            <div class="report-logo">
+                                🛡
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    PhishGuard
+                                </h3>
+
+                                <span>
+                                    AI URL SECURITY ANALYSIS
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="reportBadge"
+                            class="report-badge"
+                        >
+                            AWAITING SCAN
+                        </div>
+
+                    </div>
+
+
+                    <div class="report-grid">
+
+
+                        <div class="report-item">
+
+                            <span>
+                                Scanned URL
+                            </span>
+
+                            <strong
+                                id="reportUrl"
+                                class="mono"
+                            >
+                                --
+                            </strong>
+
+                        </div>
+
+
+                        <div class="report-item">
+
+                            <span>
+                                Scan Time
+                            </span>
+
+                            <strong id="reportTime">
+                                --
+                            </strong>
+
+                        </div>
+
+
+                        <div class="report-item">
+
+                            <span>
+                                Verdict
+                            </span>
+
+                            <strong id="reportVerdict">
+                                --
+                            </strong>
+
+                        </div>
+
+
+                        <div class="report-item">
+
+                            <span>
+                                Risk Score
+                            </span>
+
+                            <strong id="reportRiskScore">
+                                --
+                            </strong>
+
+                        </div>
+
+
+                        <div class="report-item">
+
+                            <span>
+                                Confidence
+                            </span>
+
+                            <strong id="reportConfidence">
+                                --
+                            </strong>
+
+                        </div>
+
+
+                        <div class="report-item">
+
+                            <span>
+                                System Status
+                            </span>
+
+                            <strong id="reportStatus">
+                                --
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="report-divider"></div>
+
+
+                    <!-- REPORT SUMMARY -->
+
+                    <div class="report-ir-summary">
+
+                        <span class="section-label">
+                            INFORMATION RETRIEVAL SUPPORT
+                        </span>
+
+                        <p id="reportIRSummary">
+                            IR analysis appears after a URL is scanned.
+                        </p>
+
+                    </div>
+
+                    <div class="report-divider"></div>
+
+                    <div class="report-explanation">
+
+                        <div class="report-explanation-icon">
+                            ℹ
+                        </div>
+
+                        <div>
+
+                            <span class="section-label">
+                                ANALYSIS SUMMARY
+                            </span>
+
+                            <p id="reportSummary">
+                                Scan a URL to generate a security report.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- AI EXPLANATION -->
+
+                    <div class="explanation-section">
+
+                        <div class="explanation-card">
+
+                            <div class="explanation-icon">
+                                AI
+                            </div>
+
+                            <div class="explanation-content">
+
+                                <span class="section-label">
+                                    AI SECURITY INSIGHT
+                                </span>
+
+                                <h4>
+                                    Why was this result generated?
+                                </h4>
+
+                                <p id="aiExplanation">
+                                    The explanation will appear after a URL
+                                    is analyzed.
+                                </p>
+
+
+                                <ul
+                                    id="reasonList"
+                                    class="reason-list"
+                                >
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- REPORT ACTIONS -->
+
+                    <div class="report-actions">
+
+                        <button
+                            type="button"
+                            id="printReportBtn"
+                            class="secondary-btn"
+                        >
+                            Print Report
+                        </button>
+
+
+                        <button
+                            type="button"
+                            id="exportReportBtn"
+                            class="secondary-btn"
+                        >
+                            Export Report
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 FOOTER
+            ================================================== -->
+
+            <footer class="footer">
+
+                <span>
+                    PhishGuard © 2026
+                </span>
+
+                <span>
+                    AI-Powered Phishing URL Detection
+                </span>
+
+            </footer>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script src="api-config.js?v=deploy-1"></script>
+<script src="script.js?v=deploy-1"></script>
+
+</body>
+</html>

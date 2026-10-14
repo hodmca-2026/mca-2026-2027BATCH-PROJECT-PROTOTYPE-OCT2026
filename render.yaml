@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: phishguard-ae013-api
+    runtime: python
+    plan: standard
+    buildCommand: git lfs pull && pip install -r requirements.txt
+    startCommand: mkdir -p /var/data && ln -sfn /var/data/db.sqlite3 db.sqlite3 && uvicorn Backend.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /
+    disk:
+      name: phishguard-scan-history
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+
+  - type: web
+    name: phishguard-ae013-frontend
+    runtime: static
+    rootDir: Frontend
+    buildCommand: sed -i "s|http://127.0.0.1:8000|https://${PHISHGUARD_API_HOST}|g" api-config.js
+    staticPublishPath: .
+    envVars:
+      - key: PHISHGUARD_API_HOST
+        fromService:
+          type: web
+          name: phishguard-ae013-api
+          property: host
