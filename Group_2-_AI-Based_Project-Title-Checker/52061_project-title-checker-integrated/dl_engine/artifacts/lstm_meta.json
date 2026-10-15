@@ -1,0 +1,284 @@
+{
+  "model_type": "PyTorch Bidirectional LSTM (Masked Mean Pooling)",
+  "epochs": 40,
+  "max_len": 64,
+  "embedding_dim": 64,
+  "hidden_dim": 64,
+  "bidirectional": true,
+  "vocab_size": 1749,
+  "dataset_info": {
+    "dataset_provenance": "182 curated illustrative academic proposal benchmarks across 7 domains (26 per domain).",
+    "provenance_note": "Synthetic/manually curated development dataset for syllabus integration and experimental evaluation. Does not represent production real-world accuracy.",
+    "train_size": 126,
+    "val_size": 21,
+    "test_size": 35
+  },
+  "lstm_metrics": {
+    "test_accuracy": 0.4286,
+    "test_macro_f1": 0.434,
+    "confusion_matrix": [
+      [
+        2,
+        0,
+        0,
+        0,
+        2,
+        0,
+        1
+      ],
+      [
+        0,
+        3,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        1,
+        2,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        2,
+        0,
+        2
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        3,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        4,
+        0
+      ],
+      [
+        1,
+        0,
+        2,
+        1,
+        0,
+        0,
+        1
+      ]
+    ],
+    "classification_report": {
+      "Healthcare": {
+        "precision": 0.6666666666666666,
+        "recall": 0.4,
+        "f1-score": 0.5,
+        "support": 5.0
+      },
+      "Education": {
+        "precision": 1.0,
+        "recall": 0.6,
+        "f1-score": 0.75,
+        "support": 5.0
+      },
+      "Finance": {
+        "precision": 0.16666666666666666,
+        "recall": 0.2,
+        "f1-score": 0.18181818181818182,
+        "support": 5.0
+      },
+      "Agriculture": {
+        "precision": 0.3333333333333333,
+        "recall": 0.2,
+        "f1-score": 0.25,
+        "support": 5.0
+      },
+      "Cybersecurity": {
+        "precision": 0.3333333333333333,
+        "recall": 0.6,
+        "f1-score": 0.42857142857142855,
+        "support": 5.0
+      },
+      "Web Applications": {
+        "precision": 0.6666666666666666,
+        "recall": 0.8,
+        "f1-score": 0.7272727272727273,
+        "support": 5.0
+      },
+      "Other": {
+        "precision": 0.2,
+        "recall": 0.2,
+        "f1-score": 0.2,
+        "support": 5.0
+      },
+      "accuracy": 0.42857142857142855,
+      "macro avg": {
+        "precision": 0.48095238095238096,
+        "recall": 0.42857142857142855,
+        "f1-score": 0.4339517625231912,
+        "support": 35.0
+      },
+      "weighted avg": {
+        "precision": 0.4809523809523809,
+        "recall": 0.42857142857142855,
+        "f1-score": 0.4339517625231911,
+        "support": 35.0
+      }
+    }
+  },
+  "baseline_metrics": {
+    "model": "TF-IDF (1-2 ngrams) + Logistic Regression (C=1.0)",
+    "test_accuracy": 0.7429,
+    "test_macro_f1": 0.7351,
+    "confusion_matrix": [
+      [
+        2,
+        1,
+        0,
+        2,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        5,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        3,
+        1,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        4,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        5,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0,
+        0,
+        4,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        3
+      ]
+    ],
+    "classification_report": {
+      "Healthcare": {
+        "precision": 1.0,
+        "recall": 0.4,
+        "f1-score": 0.5714285714285714,
+        "support": 5.0
+      },
+      "Education": {
+        "precision": 0.7142857142857143,
+        "recall": 1.0,
+        "f1-score": 0.8333333333333334,
+        "support": 5.0
+      },
+      "Finance": {
+        "precision": 0.75,
+        "recall": 0.6,
+        "f1-score": 0.6666666666666666,
+        "support": 5.0
+      },
+      "Agriculture": {
+        "precision": 0.5,
+        "recall": 0.8,
+        "f1-score": 0.6153846153846154,
+        "support": 5.0
+      },
+      "Cybersecurity": {
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "f1-score": 0.9090909090909091,
+        "support": 5.0
+      },
+      "Web Applications": {
+        "precision": 0.8,
+        "recall": 0.8,
+        "f1-score": 0.8,
+        "support": 5.0
+      },
+      "Other": {
+        "precision": 1.0,
+        "recall": 0.6,
+        "f1-score": 0.75,
+        "support": 5.0
+      },
+      "accuracy": 0.7428571428571429,
+      "macro avg": {
+        "precision": 0.7996598639455783,
+        "recall": 0.7428571428571428,
+        "f1-score": 0.735129156557728,
+        "support": 35.0
+      },
+      "weighted avg": {
+        "precision": 0.7996598639455782,
+        "recall": 0.7428571428571429,
+        "f1-score": 0.735129156557728,
+        "support": 35.0
+      }
+    }
+  },
+  "domains": [
+    "Healthcare",
+    "Education",
+    "Finance",
+    "Agriculture",
+    "Cybersecurity",
+    "Web Applications",
+    "Other"
+  ],
+  "crop_yield_test_case": {
+    "input": "AI-Based Crop Yield Prediction. Predict crop production using soil type, rainfall, temperature, humidity, fertilizer usage, and historical crop yield data.",
+    "predicted_domain": "Agriculture",
+    "confidence": 0.9845,
+    "success": true
+  }
+}

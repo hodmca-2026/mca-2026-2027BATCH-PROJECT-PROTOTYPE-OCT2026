@@ -1,0 +1,18 @@
+{
+  "model_type": "PyTorch BiLSTM Token Classifier",
+  "vocab_size": 220,
+  "num_classes": 9,
+  "labels": [
+    "O",
+    "B-TECH",
+    "I-TECH",
+    "B-METHOD",
+    "I-METHOD",
+    "B-LANG",
+    "I-LANG",
+    "B-DOMAIN",
+    "I-DOMAIN"
+  ],
+  "epochs": 50,
+  "note": "Trained on 30 illustrative annotated academic sequences with word dropout for OOV regularization."
+}

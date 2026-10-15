@@ -1,0 +1,33 @@
+{
+  "model_type": "PyTorch Dense Autoencoder",
+  "input_dim": 250,
+  "hidden_dim": 64,
+  "latent_dim": 24,
+  "epochs": 60,
+  "anomaly_threshold": 0.003973,
+  "mean_mse": 0.003828,
+  "std_mse": 0.000199,
+  "percentile_used": 90.0,
+  "ood_validation": [
+    {
+      "text": "Quantum entanglement based teleportation protocol in non-abelian anyon lattices",
+      "mse": 0.003898,
+      "detected_as_unusual": false
+    },
+    {
+      "text": "Gourmet culinary recipe recommendation with sous vide thermal temperature charts",
+      "mse": 0.003914,
+      "detected_as_unusual": false
+    },
+    {
+      "text": "High fashion textile weaving patterns using antique handloom jacquard machines",
+      "mse": 0.003448,
+      "detected_as_unusual": false
+    },
+    {
+      "text": "Archaeological ceramic pottery classification using carbon-14 dating isotopes",
+      "mse": 0.003788,
+      "detected_as_unusual": false
+    }
+  ]
+}
