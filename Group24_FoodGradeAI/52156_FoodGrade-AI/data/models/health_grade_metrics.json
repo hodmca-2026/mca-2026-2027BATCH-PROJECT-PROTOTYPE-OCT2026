@@ -1,0 +1,155 @@
+{
+  "dataset_size": 69,
+  "training_size": 55,
+  "testing_size": 14,
+  "accuracy": 78.57,
+  "classification_report": {
+    "A": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 1.0
+    },
+    "B": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 1.0
+    },
+    "C": {
+      "precision": 0.6666666666666666,
+      "recall": 1.0,
+      "f1-score": 0.8,
+      "support": 2.0
+    },
+    "D": {
+      "precision": 0.75,
+      "recall": 0.8571428571428571,
+      "f1-score": 0.8,
+      "support": 7.0
+    },
+    "E": {
+      "precision": 1.0,
+      "recall": 0.3333333333333333,
+      "f1-score": 0.5,
+      "support": 3.0
+    },
+    "accuracy": 0.7857142857142857,
+    "macro avg": {
+      "precision": 0.8833333333333332,
+      "recall": 0.8380952380952381,
+      "f1-score": 0.82,
+      "support": 14.0
+    },
+    "weighted avg": {
+      "precision": 0.8273809523809523,
+      "recall": 0.7857142857142857,
+      "f1-score": 0.7642857142857143,
+      "support": 14.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      2,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      6,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      2,
+      1
+    ]
+  ],
+  "labels": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "class_distribution": {
+    "A": 6,
+    "B": 6,
+    "C": 11,
+    "D": 34,
+    "E": 12
+  },
+  "limitations": [
+    "Surrogate Model: Approximates the deterministic 6-dimension FoodGrade scoring rules; not independent clinical validation.",
+    "Feature Scope: Evaluates only reported macronutrients and sodium; micronutrients, additives, and processing level are not modeled.",
+    "Class Distribution: Real Indian packaged foods from Open Food Facts exhibit skew toward middle and lower grades (C/D).",
+    "Label Origin: Training targets reflect FoodGrade V2.5 scoring thresholds applied to label values rather than subjective human ratings."
+  ],
+  "target_label_policy": "FoodGrade V2.5 algorithmic profile applied to nutrition facts",
+  "feature_importance": [
+    {
+      "feature": "fibre",
+      "importance": 20.63
+    },
+    {
+      "feature": "total_fat",
+      "importance": 16.77
+    },
+    {
+      "feature": "protein",
+      "importance": 14.68
+    },
+    {
+      "feature": "sugar",
+      "importance": 13.61
+    },
+    {
+      "feature": "calories",
+      "importance": 12.06
+    },
+    {
+      "feature": "saturated_fat",
+      "importance": 11.3
+    },
+    {
+      "feature": "salt",
+      "importance": 10.96
+    }
+  ],
+  "cross_val_scores": [
+    57.14,
+    64.29,
+    78.57,
+    92.86,
+    92.31
+  ],
+  "cross_val_mean": 77.03,
+  "cross_val_std": 14.45,
+  "model_path": "C:\\Users\\uttam\\Downloads\\FoodGrade-AI-main\\FoodGrade-AI-main\\data\\models\\health_grade_model.pkl",
+  "model_state": "trained",
+  "data_sources": {
+    "db_rows": 24,
+    "csv_rows": 25,
+    "synthetic_rows": 25
+  }
+}

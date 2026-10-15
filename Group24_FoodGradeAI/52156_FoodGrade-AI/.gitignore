@@ -1,0 +1,31 @@
+.venv/
+venv/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.idea/
+.vscode/
+*.py[cod]
+.env
+.env.*
+!.env.example
+*.log
+*.bak
+
+# Temporary crawled web snapshots and crawler outputs
+data/web/retrieved_*
+data/web/crawler_latest.json
+!data/web/.gitkeep
+
+# Database backups and SQLite journals
+database/*_backup_*.db
+*.db-journal
+*.sqlite3-journal
+
+# Duplicate archives & temporary unpacked directories
+*.zip
+pptx_extract/
+
+# OS specific files
+.DS_Store
+Thumbs.db
