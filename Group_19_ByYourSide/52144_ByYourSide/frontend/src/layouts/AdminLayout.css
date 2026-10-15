@@ -1,0 +1,45 @@
+
+.admin-layout {
+  min-height: 100vh;
+}
+
+.admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 5%;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.admin-header h2 {
+  margin: 6px 0 0;
+  color: var(--text);
+}
+
+.admin-header-label {
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.admin-logout-btn {
+  flex-shrink: 0;
+}
+
+.admin-content {
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .admin-header {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .admin-header h2 {
+    font-size: 18px;
+  }
+}

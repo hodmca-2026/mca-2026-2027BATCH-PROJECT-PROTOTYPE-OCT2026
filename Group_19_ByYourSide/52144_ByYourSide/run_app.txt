@@ -1,0 +1,20 @@
+ 
+ ----------Terminal 1 — ML service -----------
+ cd D:\CODING_D\Projects\ByYourSide
+.venv\Scripts\activate
+python -m uvicorn ml.src.main:app --reload --port 8000
+
+----------- Terminal 2 — Backend ----------
+
+cd D:\CODING_D\Projects\ByYourSide\backend
+node src/server.js
+
+
+---------- Terminal 3 — Frontend --------
+
+cd D:\CODING_D\Projects\ByYourSide\frontend
+npm run dev
+
+
+admin : admin@gmail.com
+pass : admin123
