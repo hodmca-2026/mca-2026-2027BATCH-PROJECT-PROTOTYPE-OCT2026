@@ -1,0 +1,6 @@
+# created on each PC, do not upload
+venv/
+data/
+__pycache__/
+*.pyc
+runs/

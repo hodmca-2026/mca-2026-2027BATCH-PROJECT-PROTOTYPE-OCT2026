@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Live Detection | ObjectLens{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div>
+    <h1>Live detection</h1>
+    <p class="muted">Point the camera at everyday objects, or upload a photo. YOLOv8 finds the objects; save a result to search for it later.</p>
+  </div>
+  <span class="pill" id="camState"><i></i>Camera off</span>
+</div>
+
+<div class="detect-grid">
+  <section class="card stage-card">
+    <div class="stage" id="stage">
+      <video id="video" playsinline muted class="hidden"></video>
+      <img id="still" alt="Captured or uploaded image" class="hidden">
+      <canvas id="overlay" aria-hidden="true"></canvas>
+      <div class="stage-empty" id="stageEmpty">
+        <p><b>Camera is off</b></p>
+        <p class="muted">Start the camera, or upload an image to detect objects in it.</p>
+      </div>
+      <div class="stage-badge hidden" id="stageBadge"></div>
+      <div class="stage-busy hidden" id="stageBusy"><span class="spin"></span>Detecting</div>
+    </div>
+    <div class="toolbar">
+      <button class="btn primary" id="startBtn">Start camera</button>
+      <button class="btn" id="stopBtn" disabled>Stop camera</button>
+      <button class="btn primary-outline" id="captureBtn" disabled>Capture and detect</button>
+      <label class="btn" for="fileInput" id="uploadLabel">Upload image</label>
+      <input type="file" id="fileInput" accept=".jpg,.jpeg,.png,.bmp,.webp" class="hidden">
+      <button class="btn ghost hidden" id="backBtn">Back to camera</button>
+    </div>
+    <div class="toolbar sub">
+      <label class="switch"><input type="checkbox" id="liveToggle" disabled> Live boxes on the video</label>
+      <label class="slider">Confidence threshold <b id="confVal">0.25</b>
+        <input type="range" id="conf" min="0.10" max="0.80" step="0.05" value="0.25"></label>
+    </div>
+  </section>
+
+  <aside class="side">
+    <section class="card">
+      <div class="card-head"><h2>Detected objects</h2><span class="muted small" id="detMeta"></span></div>
+      <div id="detBody" class="card-body">
+        <p class="empty">No detection yet. Capture a frame or upload an image.</p>
+      </div>
+    </section>
+    <section class="card">
+      <div class="card-head"><h2>Save result</h2></div>
+      <div class="card-body">
+        <label class="field-label" for="note">Note (optional)</label>
+        <input type="text" id="note" maxlength="120" placeholder="e.g. desk, kitchen, parking lot">
+        <button class="btn primary wide" id="saveBtn" disabled>Save result</button>
+        <p class="small muted" id="saveHint">Capture a frame or upload an image first. Live boxes are not saved.</p>
+      </div>
+    </section>
+  </aside>
+</div>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/detect.js') }}"></script>{% endblock %}

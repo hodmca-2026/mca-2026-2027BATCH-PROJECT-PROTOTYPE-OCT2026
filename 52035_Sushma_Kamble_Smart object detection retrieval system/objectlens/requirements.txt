@@ -1,0 +1,10 @@
+# ObjectLens web app
+flask>=3.0
+ultralytics>=8.1
+opencv-python>=4.8
+numpy>=1.24
+
+# only for the scripts in other_models/ (not used by the web app)
+torch
+torchvision
+matplotlib

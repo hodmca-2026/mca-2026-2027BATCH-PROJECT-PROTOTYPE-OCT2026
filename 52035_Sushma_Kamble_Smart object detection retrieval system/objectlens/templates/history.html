@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Detection History | ObjectLens{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div>
+    <h1>Detection history</h1>
+    <p class="muted">Search the detections you saved. This looks through stored records only; it does not run the camera or the model.</p>
+  </div>
+  <button class="btn danger" id="clearAllBtn">Clear history</button>
+</div>
+
+<section class="card search-card">
+  <form class="search-row" id="searchForm" autocomplete="off">
+    <div class="search-box">
+      <input type="search" id="q" list="labelList" placeholder="Search objects, e.g. person, bottle, chair" aria-label="Search objects">
+      <datalist id="labelList"></datalist>
+    </div>
+    <button class="btn primary" type="submit" id="searchBtn">Search</button>
+  </form>
+  <div class="filters">
+    <label>Object type
+      <select id="fLabel"><option value="">Any object</option></select></label>
+    <label>From <input type="date" id="fFrom"></label>
+    <label>To <input type="date" id="fTo"></label>
+    <label><span>Min confidence <b id="fConfVal">0.00</b></span>
+      <input type="range" id="fConf" min="0" max="0.95" step="0.05" value="0"></label>
+    <label>Sort
+      <select id="fSort">
+        <option value="relevance">Best match</option>
+        <option value="newest">Newest first</option>
+        <option value="oldest">Oldest first</option>
+      </select></label>
+    <button class="btn ghost" type="button" id="resetBtn">Reset filters</button>
+  </div>
+</section>
+
+<div class="result-info" id="resultInfo"></div>
+<div class="grid" id="results"></div>
+
+<div class="modal hidden" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2 id="detailTitle">Record</h2>
+      <button class="btn ghost" id="closeDetail">Close</button>
+    </div>
+    <div id="detailBody"></div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/history.js') }}"></script>{% endblock %}

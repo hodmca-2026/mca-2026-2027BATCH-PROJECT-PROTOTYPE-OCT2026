@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}ObjectLens{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span>ObjectLens</a>
+  <nav class="nav">
+    <a href="/" class="{% if active == 'detect' %}active{% endif %}">Live Detection</a>
+    <a href="/history" class="{% if active == 'history' %}active{% endif %}">Detection History</a>
+  </nav>
+</header>
+<main class="page">
+  {% block content %}{% endblock %}
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="modal hidden" id="confirmModal" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+  <div class="modal-box small">
+    <h2 id="confirmTitle">Are you sure?</h2>
+    <p class="muted" id="confirmText"></p>
+    <div class="modal-actions">
+      <button class="btn" id="confirmCancel">Cancel</button>
+      <button class="btn danger-solid" id="confirmOk">Delete</button>
+    </div>
+  </div>
+</div>
+<script src="{{ url_for('static', filename='js/common.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>
