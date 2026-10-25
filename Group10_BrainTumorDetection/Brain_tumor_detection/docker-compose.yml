@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend
+    container_name: btd-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/uploads:/app/uploads
+      - backend_db:/app/db_data
+      - ./ml/models:/app/models   # trained model + metrics (optional)
+    environment:
+      - DATABASE_URL=sqlite:////app/db_data/app.db
+      # For SQL Server instead, comment the line above and uncomment below
+      # (also uncomment the sqlserver service):
+      # - DATABASE_URL=mssql+pyodbc://sa:YourStrong!Passw0rd@sqlserver:1433/BrainTumorDB?driver=ODBC+Driver+17+for+SQL+Server
+      - SECRET_KEY=change-me-in-production
+      - MAX_UPLOAD_MB=10
+    # depends_on:
+    #   - sqlserver
+
+  frontend:
+    build: ./frontend
+    container_name: btd-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+  # Optional production-style SQL Server service.
+  # Uncomment to use SQL Server instead of the default SQLite dev setup.
+  # sqlserver:
+  #   image: mcr.microsoft.com/mssql/server:2022-latest
+  #   container_name: btd-sqlserver
+  #   environment:
+  #     - ACCEPT_EULA=Y
+  #     - MSSQL_SA_PASSWORD=YourStrong!Passw0rd
+  #   ports:
+  #     - "1433:1433"
+  #   volumes:
+  #     - sqlserver_data:/var/opt/mssql
+
+volumes:
+  backend_db:
+  # sqlserver_data:
