@@ -1,0 +1,18 @@
+fastapi>=0.110.0
+uvicorn[standard]>=0.27.0
+sqlalchemy>=2.0.0
+pydantic[email]>=2.6.0
+pydantic-settings>=2.2.0
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+bcrypt==4.0.1
+python-multipart>=0.0.9
+pillow>=10.0.0
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+torchvision
+numpy<2
+opencv-python-headless
+python-dotenv>=1.0.0
+
+reportlab>=4.0

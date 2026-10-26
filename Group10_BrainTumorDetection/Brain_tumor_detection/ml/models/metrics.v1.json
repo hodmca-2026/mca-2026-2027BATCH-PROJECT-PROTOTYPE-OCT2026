@@ -1,0 +1,156 @@
+{
+  "generated_at": "2026-10-13 22:18:40",
+  "is_placeholder": false,
+  "arch": "resnet18",
+  "epochs_trained": 15,
+  "best_val_accuracy": 0.9928571428571429,
+  "test_metrics": {
+    "loss": 0.3993175171652547,
+    "accuracy": 0.9525,
+    "precision_macro": 0.9561092493712366,
+    "recall_macro": 0.9525,
+    "f1_macro": 0.9511892850220162,
+    "confusion_matrix": [
+      [
+        327,
+        39,
+        33,
+        1
+      ],
+      [
+        0,
+        397,
+        0,
+        3
+      ],
+      [
+        0,
+        0,
+        400,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        400
+      ]
+    ],
+    "per_class": {
+      "glioma": {
+        "sensitivity": 0.8175,
+        "specificity": 1.0
+      },
+      "meningioma": {
+        "sensitivity": 0.9925,
+        "specificity": 0.9675
+      },
+      "notumor": {
+        "sensitivity": 1.0,
+        "specificity": 0.9725
+      },
+      "pituitary": {
+        "sensitivity": 1.0,
+        "specificity": 0.9967
+      }
+    }
+  },
+  "classes": [
+    "glioma",
+    "meningioma",
+    "notumor",
+    "pituitary"
+  ],
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.279005917218052,
+      "val_loss": 0.1538678573000999,
+      "val_accuracy": 0.9464285714285714
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.09846286456249341,
+      "val_loss": 0.06882021966434661,
+      "val_accuracy": 0.9761904761904762
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.05505413313263229,
+      "val_loss": 0.08168615509001982,
+      "val_accuracy": 0.9738095238095238
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.04315464125805292,
+      "val_loss": 0.044957254968938376,
+      "val_accuracy": 0.9857142857142858
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.039600318106783536,
+      "val_loss": 0.04659757855392638,
+      "val_accuracy": 0.9845238095238096
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.023029759670646875,
+      "val_loss": 0.06521373982763007,
+      "val_accuracy": 0.9821428571428571
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.02091266745173161,
+      "val_loss": 0.0511245080646837,
+      "val_accuracy": 0.9821428571428571
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.013479261074318872,
+      "val_loss": 0.04161430257372558,
+      "val_accuracy": 0.9857142857142858
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.007234565527060953,
+      "val_loss": 0.04300076436761412,
+      "val_accuracy": 0.986904761904762
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.006862469632941603,
+      "val_loss": 0.03595771013504072,
+      "val_accuracy": 0.9892857142857143
+    },
+    {
+      "epoch": 11,
+      "train_loss": 0.008267397304190745,
+      "val_loss": 0.04059297222355824,
+      "val_accuracy": 0.9916666666666667
+    },
+    {
+      "epoch": 12,
+      "train_loss": 0.007629726311101915,
+      "val_loss": 0.04028199549398518,
+      "val_accuracy": 0.9892857142857143
+    },
+    {
+      "epoch": 13,
+      "train_loss": 0.009053399256516655,
+      "val_loss": 0.049494817586881776,
+      "val_accuracy": 0.986904761904762
+    },
+    {
+      "epoch": 14,
+      "train_loss": 0.006406888160306741,
+      "val_loss": 0.037054077586037154,
+      "val_accuracy": 0.986904761904762
+    },
+    {
+      "epoch": 15,
+      "train_loss": 0.005357626622284473,
+      "val_loss": 0.03327871928423909,
+      "val_accuracy": 0.9928571428571429
+    }
+  ]
+}

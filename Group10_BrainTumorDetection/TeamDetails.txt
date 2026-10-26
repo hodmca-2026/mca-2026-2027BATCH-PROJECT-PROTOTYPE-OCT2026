@@ -1,0 +1,27 @@
+PROJECT TITLE: Brain Tumor Detection Using Deep Learning
+
+DIVISION: B
+BATCH: S2
+
+TEAM MEMBERS:
+
+1. Name: Pratiksha Mogal(Team Leader)
+   Roll Number: 52139
+
+2. Name: Vishakha Loankar
+   Roll Number: 52137
+
+3. Name: Disha Nimbalkar
+   Roll Number: 52141
+
+
+
+TECHNOLOGIES USED:
+- Python
+- Deep Learning (MobileNetV2)
+- FastAPI
+- React
+- Machine Learning
+
+REPOSITORY:
+MCA 2026–2027 Project Prototype

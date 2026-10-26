@@ -1,0 +1,27 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pth
+*.pt
+
+# Node
+node_modules/
+dist/
+
+# Env / secrets
+.env
+
+# Backend runtime data
+backend/app.db
+backend/uploads/
+
+# Dataset (too large for git -- see docs/README.md for download instructions)
+ml/dataset/
+ml/models/*.pth
+ml/*.png
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/

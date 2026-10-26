@@ -1,0 +1,235 @@
+{
+  "is_placeholder": false,
+  "arch": "resnet18",
+  "classes": [
+    "glioma",
+    "meningioma",
+    "notumor",
+    "pituitary"
+  ],
+  "evaluated_at": "2026-10-14 06:54:59",
+  "evaluation_protocol": "Headline test metrics exclude Testing images that are near-duplicates of a Training image (no patient IDs exist in this dataset); official-test metrics are reported separately. Not clinically validated.",
+  "dataset": {
+    "name": "Brain Tumor MRI Dataset (Kaggle)",
+    "classes": [
+      "glioma",
+      "meningioma",
+      "notumor",
+      "pituitary"
+    ],
+    "train_images": 5600,
+    "test_official": 1600,
+    "test_leakage_controlled": 1135
+  },
+  "dedup": {
+    "method": "mean-centred 32x32 grayscale, cosine distance",
+    "threshold_distance": 0.03,
+    "test_flagged_near_duplicates": 465,
+    "flagged_examples": [
+      "Te-gl_141.jpg",
+      "Te-gl_154.jpg",
+      "Te-gl_160.jpg",
+      "Te-gl_168.jpg",
+      "Te-gl_169.jpg",
+      "Te-gl_18.jpg",
+      "Te-gl_214.jpg",
+      "Te-gl_233.jpg",
+      "Te-gl_234.jpg",
+      "Te-gl_249.jpg",
+      "Te-gl_254.jpg",
+      "Te-gl_262.jpg",
+      "Te-gl_267.jpg",
+      "Te-gl_282.jpg",
+      "Te-gl_289.jpg",
+      "Te-gl_299.jpg",
+      "Te-gl_3.jpg",
+      "Te-gl_311.jpg",
+      "Te-gl_342.jpg",
+      "Te-gl_364.jpg"
+    ]
+  },
+  "test_metrics": {
+    "n_images": 1135,
+    "accuracy": 0.9348017621145375,
+    "precision_macro": 0.8898856151493766,
+    "recall_macro": 0.9501069397042093,
+    "f1_macro": 0.9093304448032361,
+    "roc_auc_ovr_macro": 0.9883265360065197,
+    "ece_uncalibrated": 0.05211486842663807,
+    "confusion_matrix": [
+      [
+        304,
+        37,
+        33,
+        1
+      ],
+      [
+        0,
+        290,
+        0,
+        3
+      ],
+      [
+        0,
+        0,
+        71,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        396
+      ]
+    ],
+    "per_class": {
+      "glioma": {
+        "sensitivity": 0.8107,
+        "specificity": 1.0
+      },
+      "meningioma": {
+        "sensitivity": 0.9898,
+        "specificity": 0.9561
+      },
+      "notumor": {
+        "sensitivity": 1.0,
+        "specificity": 0.969
+      },
+      "pituitary": {
+        "sensitivity": 1.0,
+        "specificity": 0.9946
+      }
+    },
+    "classification_report": {
+      "glioma": {
+        "precision": 1.0,
+        "recall": 0.8106666666666666,
+        "f1-score": 0.8954344624447718,
+        "support": 375.0
+      },
+      "meningioma": {
+        "precision": 0.8868501529051988,
+        "recall": 0.9897610921501706,
+        "f1-score": 0.9354838709677419,
+        "support": 293.0
+      },
+      "notumor": {
+        "precision": 0.6826923076923077,
+        "recall": 1.0,
+        "f1-score": 0.8114285714285714,
+        "support": 71.0
+      },
+      "pituitary": {
+        "precision": 0.99,
+        "recall": 1.0,
+        "f1-score": 0.9949748743718593,
+        "support": 396.0
+      },
+      "accuracy": 0.9348017621145375,
+      "macro avg": {
+        "precision": 0.8898856151493766,
+        "recall": 0.9501069397042093,
+        "f1-score": 0.9093304448032361,
+        "support": 1135.0
+      },
+      "weighted avg": {
+        "precision": 0.9474522014514335,
+        "recall": 0.9348017621145375,
+        "f1-score": 0.935247732540108,
+        "support": 1135.0
+      }
+    }
+  },
+  "test_metrics_official": {
+    "n_images": 1600,
+    "accuracy": 0.9525,
+    "precision_macro": 0.9561092493712366,
+    "recall_macro": 0.9525,
+    "f1_macro": 0.9511892850220162,
+    "roc_auc_ovr_macro": 0.9892247395833333,
+    "ece_uncalibrated": 0.038079321719706086,
+    "confusion_matrix": [
+      [
+        327,
+        39,
+        33,
+        1
+      ],
+      [
+        0,
+        397,
+        0,
+        3
+      ],
+      [
+        0,
+        0,
+        400,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        400
+      ]
+    ],
+    "per_class": {
+      "glioma": {
+        "sensitivity": 0.8175,
+        "specificity": 1.0
+      },
+      "meningioma": {
+        "sensitivity": 0.9925,
+        "specificity": 0.9675
+      },
+      "notumor": {
+        "sensitivity": 1.0,
+        "specificity": 0.9725
+      },
+      "pituitary": {
+        "sensitivity": 1.0,
+        "specificity": 0.9967
+      }
+    },
+    "classification_report": {
+      "glioma": {
+        "precision": 1.0,
+        "recall": 0.8175,
+        "f1-score": 0.8995873452544704,
+        "support": 400.0
+      },
+      "meningioma": {
+        "precision": 0.9105504587155964,
+        "recall": 0.9925,
+        "f1-score": 0.9497607655502392,
+        "support": 400.0
+      },
+      "notumor": {
+        "precision": 0.9237875288683602,
+        "recall": 1.0,
+        "f1-score": 0.9603841536614646,
+        "support": 400.0
+      },
+      "pituitary": {
+        "precision": 0.9900990099009901,
+        "recall": 1.0,
+        "f1-score": 0.9950248756218906,
+        "support": 400.0
+      },
+      "accuracy": 0.9525,
+      "macro avg": {
+        "precision": 0.9561092493712366,
+        "recall": 0.9525,
+        "f1-score": 0.9511892850220162,
+        "support": 1600.0
+      },
+      "weighted avg": {
+        "precision": 0.9561092493712366,
+        "recall": 0.9525,
+        "f1-score": 0.9511892850220163,
+        "support": 1600.0
+      }
+    }
+  }
+}
